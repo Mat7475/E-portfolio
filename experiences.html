@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Mathieu Servonnet - Expériences</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/experiences.css">
+</head>
+<body>
+    <div class="animated-bg"></div>
+    <div id="particles-container"></div>
+
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">MS.</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="formation.html">Formation</a></li>
+                <li><a href="experiences.html" class="active">Expériences</a></li>
+                <li><a href="competences.html">Compétences</a></li>
+                <li><a href="atouts.html">Atouts</a></li>
+                <li><a href="loisirs.html">Loisirs</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2 class="section-title">🚀 Mes Projets</h2>
+        <div class="projects-grid" id="projectsGrid">
+            </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        // Lancer la génération
+        window.addEventListener('DOMContentLoaded', generateProjects);
+    </script>
+</body>
+</html>

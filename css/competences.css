@@ -1,0 +1,21 @@
+.competences-grid { display: grid; gap: 2rem; }
+.competence-card {
+    background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(10px); border-radius: 20px;
+    border: 1px solid rgba(99, 102, 241, 0.2); overflow: hidden; transition: all 0.3s;
+}
+.competence-header {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2));
+    padding: 2rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+}
+.competence-header:hover { background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(139, 92, 246, 0.3)); }
+.competence-title { font-size: 1.5rem; font-weight: 700; color: white; }
+.ac-list { max-height: 0; overflow: hidden; transition: max-height 0.5s ease; padding: 0 2rem; }
+.ac-list.show { max-height: 5000px; padding-bottom: 2rem; }
+.ac-item {
+    background: rgba(15, 23, 42, 0.5); border-left: 4px solid var(--primary);
+    padding: 1.5rem; margin: 1rem 0; border-radius: 12px; cursor: pointer; transition: all 0.3s;
+}
+.ac-item:hover { background: rgba(99, 102, 241, 0.1); transform: translateX(10px); }
+.proof-tag { font-size: 0.8rem; background: var(--secondary); padding: 0.2rem 0.5rem; border-radius: 4px; margin-right: 5px; }
+.toggle-icon { transition: transform 0.3s; font-size: 1.5rem; }
+.toggle-icon.open { transform: rotate(180deg); }

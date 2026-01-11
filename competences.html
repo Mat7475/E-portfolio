@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Mathieu Servonnet - Compétences</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/competences.css">
+</head>
+<body>
+    <div class="animated-bg"></div>
+    <div id="particles-container"></div>
+
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">MS.</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="formation.html">Formation</a></li>
+                <li><a href="experiences.html">Expériences</a></li>
+                <li><a href="competences.html" class="active">Compétences</a></li>
+                <li><a href="atouts.html">Atouts</a></li>
+                <li><a href="loisirs.html">Loisirs</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2 class="section-title">🎯 Référentiel</h2>
+        <p style="text-align:center; color:#94a3b8; margin-bottom:3rem;">Cliquez pour voir les détails.</p>
+        
+        <div class="competences-grid" id="competencesGrid"></div>
+    </div>
+
+    <div class="modal" id="acModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', generateCompetences);
+    </script>
+</body>
+</html>

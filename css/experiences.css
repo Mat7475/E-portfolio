@@ -1,0 +1,14 @@
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 2rem; }
+.project-card {
+    background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(10px); border-radius: 20px;
+    border: 1px solid rgba(99, 102, 241, 0.1); transition: all 0.4s; overflow: hidden; padding: 2rem;
+}
+.project-card:hover { transform: translateY(-10px) scale(1.02); border-color: var(--primary); box-shadow: 0 25px 70px rgba(99, 102, 241, 0.4); }
+.project-header h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: white; }
+.tag {
+    background: rgba(99, 102, 241, 0.2); color: var(--primary); padding: 0.3rem 0.8rem;
+    border-radius: 20px; font-size: 0.85rem; border: 1px solid rgba(99, 102, 241, 0.3);
+    margin-right: 0.5rem; margin-bottom: 0.5rem; display: inline-block;
+}
+.competence-tags .tag { cursor: pointer; }
+.competence-tags .tag:hover { background: var(--primary); color: white; }
