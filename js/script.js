@@ -95,20 +95,63 @@ function toggleCompetence(id, headerElement) {
 }
 
 // Modal Logic
-function showACDetails(compId, acId, text, preuves) {
+function showACDetails(compId, acId, text, preuves, acData) {
     const modal = document.getElementById('acModal');
     const modalBody = document.getElementById('modalBody');
     if(!modal) return;
     
+    // Chercher l'AC complet dans les données
+    let projetsHTML = '';
+    const comp = competences.find(c => c.id === compId);
+    if (comp) {
+        for (let niveau of comp.niveaux) {
+            const ac = niveau.ac.find(a => a.id === acId);
+            if (ac && ac.projets && ac.projets.length > 0) {
+                projetsHTML = `
+                    <h4 style="margin-top: 2rem; color: var(--accent);">📂 Projets associés :</h4>
+                    ${ac.projets.map(projet => `
+                        <div style="background: rgba(15, 23, 42, 0.6); padding: 1.5rem; border-radius: 12px; margin-top: 1rem; border-left: 4px solid var(--primary);">
+                            <h5 style="color: var(--primary); margin-bottom: 0.5rem;">${projet.titre}</h5>
+                            <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 1rem;">${projet.contexte}</p>
+                            <p style="margin-bottom: 1rem;">${projet.description}</p>
+                            
+                            <div style="margin: 1rem 0;">
+                                <strong style="font-size: 0.9rem;">Technologies :</strong><br>
+                                ${projet.technologies.map(t => `<span class="tag" style="margin-top: 0.5rem;">${t}</span>`).join('')}
+                            </div>
+                            
+                            <div style="margin: 1rem 0;">
+                                <strong style="font-size: 0.9rem;">Réalisations :</strong>
+                                <ul style="margin: 0.5rem 0 0 1.5rem; line-height: 1.8;">
+                                    ${projet.realisations.map(r => `<li>${r}</li>`).join('')}
+                                </ul>
+                            </div>
+                            
+                            <div style="margin-top: 1rem;">
+                                <strong style="font-size: 0.9rem;">Compétences mobilisées :</strong><br>
+                                ${projet.competencesLiees.map(c => `<span class="proof-tag" style="margin-top: 0.5rem;">${c}</span>`).join('')}
+                            </div>
+                        </div>
+                    `).join('')}
+                `;
+                break;
+            }
+        }
+    }
+    
     modalBody.innerHTML = `
         <h2>Détails Apprentissage Critique</h2>
         <h3 style="color: var(--primary); margin: 1rem 0;">${acId} : ${text}</h3>
+        
         <h4>Preuves d'acquisition :</h4>
         <ul style="margin: 1rem 0 1rem 2rem; line-height: 2;">
             ${preuves.split(', ').map(p => `<li>${p}</li>`).join('')}
         </ul>
+        
+        ${projetsHTML}
+        
         <p style="margin-top: 1.5rem; padding: 1rem; background: rgba(99, 102, 241, 0.1); border-radius: 8px;">
-            💡 <strong>Note</strong> : Documents détaillés disponibles dans le dossier annexes.
+            💡 <strong>Note</strong> : Documents détaillés et captures d'écran disponibles dans le dossier annexes.
         </p>
     `;
     modal.classList.add('active');
