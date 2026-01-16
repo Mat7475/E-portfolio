@@ -1,8 +1,8 @@
-// Création des particules
+// Création des particules (Pas de changement ici, c'est ok)
 function createParticles() {
     const container = document.getElementById('particles-container');
     if (!container) return;
-    for (let i = 0; i < 700; i++) {
+    for (let i = 0; i < 50; i++) { // Réduit à 50 pour la perf, 700 c'est beaucoup
         const particle = document.createElement('div');
         particle.className = 'particle';
         particle.style.left = Math.random() * 100 + '%';
@@ -17,34 +17,62 @@ function createParticles() {
 // Initialisation globale
 window.addEventListener('DOMContentLoaded', () => {
     createParticles();
+    generateProjects();    // Appel pour experiences.html
+    generateCompetences(); // Appel pour competences.html
 });
 
-// Fonctions pour la page Projets (Experiences)
+// --- GESTION DE LA PAGE EXPÉRIENCES ---
+
 function generateProjects() {
+    // On cible la grille ou la liste des projets
     const grid = document.getElementById('projectsGrid');
-    if(!grid || typeof projects === 'undefined') return;
+    
+    // Vérification que les données existent (experiences vient de data.js)
+    if(!grid || typeof experiences === 'undefined') return;
     
     grid.innerHTML = '';
-    projects.forEach(project => {
+    
+    experiences.forEach(exp => {
         const card = document.createElement('div');
         card.className = 'project-card';
+        
+        // Génération de la liste des missions (HTML)
+        const missionsHTML = exp.missions 
+            ? `<ul style="margin: 0.5rem 0 0.5rem 1.2rem; color: #cbd5e1;">
+                 ${exp.missions.map(m => `<li>${m}</li>`).join('')}
+               </ul>` 
+            : '';
+
         card.innerHTML = `
             <div class="project-header">
-                <h3>${project.title}</h3>
-                <p style="opacity: 0.9; font-size: 0.9rem; margin-bottom:1rem; color:#94a3b8;">${project.date}</p>
+                <h3>${exp.title}</h3>
+                <span class="project-date">${exp.date}</span>
             </div>
+            
             <div class="project-body">
-                <p style="margin-bottom:1rem;">${project.description}</p>
                 <div style="margin-bottom: 1rem;">
-                    <div style="margin-top: 0.5rem;">
-                        ${project.technologies.map(t => `<span class="tag">${t}</span>`).join('')}
+                    <strong style="color: var(--primary);">Contexte :</strong>
+                    <p style="font-style: italic; color: #94a3b8; margin-top: 0.2rem;">${exp.contexte}</p>
+                </div>
+
+                <p style="margin-bottom:1rem;">${exp.description}</p>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <strong style="color: var(--primary);">Missions & Réalisations :</strong>
+                    ${missionsHTML}
+                </div>
+
+                <div style="margin-bottom: 1rem;">
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                        ${exp.technologies.map(t => `<span class="tag tech-tag">${t}</span>`).join('')}
                     </div>
                 </div>
-                <div class="competence-tags">
-                    <strong style="font-size:0.9rem;">Compétences :</strong><br>
-                    <div style="margin-top:0.5rem;">
-                    ${project.competences.map(c => `
-                        <a href="competences.html" class="tag" style="text-decoration:none;">${c}</a>
+
+                <div class="competence-tags" style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
+                    <strong style="font-size:0.9rem; color: #94a3b8;">Compétences mobilisées :</strong>
+                    <div style="margin-top:0.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                    ${exp.competences.map(c => `
+                        <span class="tag comp-tag">${c}</span>
                     `).join('')}
                     </div>
                 </div>
@@ -54,7 +82,8 @@ function generateProjects() {
     });
 }
 
-// Fonctions pour la page Compétences
+// --- GESTION DE LA PAGE COMPÉTENCES ---
+
 function generateCompetences() {
     const grid = document.getElementById('competencesGrid');
     if(!grid || typeof competences === 'undefined') return;
@@ -63,24 +92,45 @@ function generateCompetences() {
     competences.forEach(comp => {
         const card = document.createElement('div');
         card.className = 'competence-card';
+        
+        // Génération HTML des niveaux et AC
+        const niveauxHTML = comp.niveaux.map(niveau => `
+            <div class="niveau-block">
+                <h4 style="margin-top: 1.5rem; color: var(--primary); border-bottom: 1px solid var(--primary); padding-bottom: 0.5rem;">
+                    ${niveau.niveau} : ${niveau.titre}
+                </h4>
+                <div class="ac-container">
+                    ${niveau.ac.map(ac => {
+                        // On prépare les données pour le onclick (échappement des quotes)
+                        const acIdSafe = ac.id;
+                        const acTextSafe = ac.text.replace(/'/g, "&apos;");
+                        // On transforme le tableau de preuves en string
+                        const preuvesSafe = ac.preuves.join('||'); 
+                        
+                        return `
+                        <div class="ac-item" onclick="prepareAndShowModal('${comp.id}', '${acIdSafe}')">
+                            <div class="ac-header">
+                                <strong>${ac.id}</strong>
+                                <span>${ac.text}</span>
+                            </div>
+                            <div class="ac-badges">
+                                ${ac.preuves.map(p => `<span class="proof-badge">📄 ${p}</span>`).join('')}
+                            </div>
+                        </div>
+                        `;
+                    }).join('')}
+                </div>
+            </div>
+        `).join('');
+
         card.innerHTML = `
             <div class="competence-header" onclick="toggleCompetence('${comp.id}', this)">
                 <h3 class="competence-title">${comp.title}</h3>
                 <span class="toggle-icon">▼</span>
             </div>
-            <p style="padding: 1rem 2rem;">${comp.description}</p>
-            <div class="ac-list" id="ac-${comp.id}">
-                ${comp.niveaux.map(niveau => `
-                    <h4 style="margin-top: 1rem; color: var(--primary);">${niveau.niveau} : ${niveau.titre}</h4>
-                    ${niveau.ac.map(ac => `
-                        <div class="ac-item" onclick="showACDetails('${comp.id}', '${ac.id}', '${ac.text}', '${ac.preuves.join(', ')}')">
-                            <strong>${ac.id}</strong> : ${ac.text}
-                            <div style="margin-top: 0.5rem;">
-                                ${ac.preuves.map(p => `<span class="proof-tag">${p}</span>`).join('')}
-                            </div>
-                        </div>
-                    `).join('')}
-                `).join('')}
+            <div class="competence-content" id="content-${comp.id}">
+                <p class="competence-desc">${comp.description}</p>
+                ${niveauxHTML}
             </div>
         `;
         grid.appendChild(card);
@@ -88,79 +138,95 @@ function generateCompetences() {
 }
 
 function toggleCompetence(id, headerElement) {
-    const list = document.getElementById(`ac-${id}`);
+    const content = document.getElementById(`content-${id}`);
     const icon = headerElement.querySelector('.toggle-icon');
-    list.classList.toggle('show');
-    icon.classList.toggle('open');
+    
+    // Toggle simple via classe CSS
+    content.classList.toggle('active'); // Assurez-vous d'avoir du CSS pour .active { display: block; }
+    icon.style.transform = content.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
 }
 
-// Modal Logic
-function showACDetails(compId, acId, text, preuves, acData) {
+// Nouvelle fonction pour trouver les données et ouvrir la modale
+function prepareAndShowModal(compId, acId) {
+    // Retrouver les données dans le tableau data.js
+    const comp = competences.find(c => c.id === compId);
+    if (!comp) return;
+
+    let targetAc = null;
+    for (const niv of comp.niveaux) {
+        const found = niv.ac.find(a => a.id === acId);
+        if (found) {
+            targetAc = found;
+            break;
+        }
+    }
+
+    if (targetAc) {
+        // Appelle la fonction d'affichage avec les données brutes
+        showACDetails(targetAc);
+    }
+}
+
+function showACDetails(acData) {
     const modal = document.getElementById('acModal');
     const modalBody = document.getElementById('modalBody');
     if(!modal) return;
-    
-    // Chercher l'AC complet dans les données
+
+    // Construction du HTML pour les projets spécifiques à cet AC
     let projetsHTML = '';
-    const comp = competences.find(c => c.id === compId);
-    if (comp) {
-        for (let niveau of comp.niveaux) {
-            const ac = niveau.ac.find(a => a.id === acId);
-            if (ac && ac.projets && ac.projets.length > 0) {
-                projetsHTML = `
-                    <h4 style="margin-top: 2rem; color: var(--accent);">📂 Projets associés :</h4>
-                    ${ac.projets.map(projet => `
-                        <div style="background: rgba(15, 23, 42, 0.6); padding: 1.5rem; border-radius: 12px; margin-top: 1rem; border-left: 4px solid var(--primary);">
-                            <h5 style="color: var(--primary); margin-bottom: 0.5rem;">${projet.titre}</h5>
-                            <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 1rem;">${projet.contexte}</p>
-                            <p style="margin-bottom: 1rem;">${projet.description}</p>
-                            
-                            <div style="margin: 1rem 0;">
-                                <strong style="font-size: 0.9rem;">Technologies :</strong><br>
-                                ${projet.technologies.map(t => `<span class="tag" style="margin-top: 0.5rem;">${t}</span>`).join('')}
-                            </div>
-                            
-                            <div style="margin: 1rem 0;">
-                                <strong style="font-size: 0.9rem;">Réalisations :</strong>
-                                <ul style="margin: 0.5rem 0 0 1.5rem; line-height: 1.8;">
-                                    ${projet.realisations.map(r => `<li>${r}</li>`).join('')}
-                                </ul>
-                            </div>
-                            
-                            <div style="margin-top: 1rem;">
-                                <strong style="font-size: 0.9rem;">Compétences mobilisées :</strong><br>
-                                ${projet.competencesLiees.map(c => `<span class="proof-tag" style="margin-top: 0.5rem;">${c}</span>`).join('')}
-                            </div>
+    if (acData.projets && acData.projets.length > 0) {
+        projetsHTML = `
+            <h4 style="margin-top: 2rem; color: #a5b4fc; border-bottom: 1px solid #334155; padding-bottom: 0.5rem;">
+                📂 Projets illustrant cet apprentissage
+            </h4>
+            <div class="modal-projects-list">
+                ${acData.projets.map(projet => `
+                    <div class="modal-project-item">
+                        <h5 style="color: var(--primary); font-size: 1.1rem; margin-bottom: 0.5rem;">${projet.titre}</h5>
+                        <p style="font-style: italic; font-size: 0.9rem; color: #94a3b8; margin-bottom: 1rem;">${projet.contexte}</p>
+                        
+                        <div style="margin-bottom: 1rem;">
+                            <strong>Ce que j'ai réalisé :</strong>
+                            <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                                ${projet.realisations.map(r => `<li>${r}</li>`).join('')}
+                            </ul>
                         </div>
-                    `).join('')}
-                `;
-                break;
-            }
-        }
+
+                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                            ${projet.technologies.map(t => `<span class="tag" style="font-size: 0.8rem;">${t}</span>`).join('')}
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+    } else {
+        projetsHTML = `<p style="margin-top:1rem; color:#64748b;">Aucun projet spécifique détaillé pour cet AC.</p>`;
     }
-    
+
     modalBody.innerHTML = `
-        <h2>Détails Apprentissage Critique</h2>
-        <h3 style="color: var(--primary); margin: 1rem 0;">${acId} : ${text}</h3>
+        <h2 style="color: var(--primary);">${acData.id}</h2>
+        <h3 style="margin-bottom: 1.5rem; color: white;">${acData.text}</h3>
         
-        <h4>Preuves d'acquisition :</h4>
-        <ul style="margin: 1rem 0 1rem 2rem; line-height: 2;">
-            ${preuves.split(', ').map(p => `<li>${p}</li>`).join('')}
-        </ul>
+        <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px;">
+            <strong>Preuves globales :</strong>
+            <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                ${acData.preuves.map(p => `<li>${p}</li>`).join('')}
+            </ul>
+        </div>
         
         ${projetsHTML}
-        
-        <p style="margin-top: 1.5rem; padding: 1rem; background: rgba(99, 102, 241, 0.1); border-radius: 8px;">
-            💡 <strong>Note</strong> : Documents détaillés et captures d'écran disponibles dans le dossier annexes.
-        </p>
     `;
+
     modal.classList.add('active');
 }
 
+// Fermeture modale
 function closeModal() {
-    document.getElementById('acModal').classList.remove('active');
+    const modal = document.getElementById('acModal');
+    if (modal) modal.classList.remove('active');
 }
 
+// Fermeture au clic en dehors
 window.onclick = function(event) {
     const modal = document.getElementById('acModal');
     if (event.target == modal) {

@@ -417,4 +417,109 @@
             ],
             couleur: "#f39c12"
         },
-    ]
+        {
+        id: "c6",
+        titre: "Collaborer au sein d'une équipe informatique",
+        niveau: "Niveau 2 - Situer son rôle et ses missions au sein d'une équipe informatique",
+        description: "Acquérir, développer et exploiter les aptitudes nécessaires pour travailler efficacement dans une équipe informatique pluridisciplinaire.",
+        apprentissagesCritiques: [
+            "AC 1 : Appréhender l'écosystème numérique",
+            "AC 2 : Découvrir les aptitudes requises selon les différents secteurs informatiques",
+            "AC 3 : Identifier les statuts, les fonctions et les rôles de chaque membre d'une équipe pluridisciplinaire",
+            "AC 4 : Acquérir les compétences interpersonnelles pour travailler en équipe"
+        ],
+        preuves: [
+            {
+                titre: "Projet UBER (SAE S3.A.01 / S4.A.01)",
+                description: "Développement d'une application complexe (API .NET & Client Vue.js) au sein d'une équipe de 4-5 étudiants.",
+                details: [
+                    "Organisation du travail en méthode Agile",
+                    "Répartition des rôles : Développeur Backend, Frontend, et Gestionnaire BDD",
+                    "Gestion de versions avec Git et résolution des conflits",
+                    "Mise en place de Code Reviews pour assurer la qualité du code"
+                ]
+            },
+            {
+                titre: "Projet SDIS 69 (SAE S2.04)",
+                description: "Conception et développement d'une application de gestion pour les pompiers en équipe de 3.",
+                details: [
+                    "Coordination pour la conception de la Base de Données (MCD/MLD)",
+                    "Partage des tâches pour le développement des interfaces WPF",
+                    "Rédaction collective du Cahier des charges et du Rapport technique"
+                ]
+            },
+            {
+                titre: "Gold Rush (SAE S1.01)",
+                description: "Création d'un jeu vidéo en C# en binôme.",
+                details: [
+                    "Travail en Pair Programming",
+                    "Communication constante pour l'intégration des algorithmes et de l'interface graphique"
+                ]
+            }
+        ],
+        couleur: "#8e44ad" 
+    }
+]
+const experiences = [
+    {
+        id: "uber",
+        title: "Application de Gestion Type UBER",
+        date: "2023 - 2024 (SAE S3/S4)",
+        contexte: "Projet académique majeur réalisé en équipe de 4 sur deux semestres. Simulation complète d'un système de VTC, livraison de repas et location de vélos.",
+        description: "Conception et développement d'une solution complète comprenant une API REST robuste et une interface client moderne.",
+        missions: [
+            "Conception de l'architecture API REST en .NET 8 (Code First)",
+            "Mise en place de la sécurité (JWT, Hashage)",
+            "Développement du frontend client avec Vue.js et Pinia",
+            "Mise en place d'une CI/CD sur Azure DevOps",
+            "Gestion de base de données PostgreSQL complexe (40+ tables)"
+        ],
+        technologies: ["C#", ".NET Core", "Vue.js", "PostgreSQL", "Entity Framework", "Azure", "Git"],
+        competences: ["Réaliser", "Optimiser", "Collaborer"]
+    },
+    {
+        id: "sdis",
+        title: "Gestion Matériel SDIS 69",
+        date: "2023 (SAE S2.04)",
+        contexte: "Projet de groupe pour le Service Départemental d'Incendie et de Secours. Besoin de gérer les commandes de matériels, véhicules et tenues.",
+        description: "Application lourde (Desktop) permettant aux casernes de gérer leurs stocks et leurs commandes auprès du siège.",
+        missions: [
+            "Analyse des besoins et création du MCD/MLD",
+            "Développement de l'interface WPF (XAML)",
+            "Création de la logique métier en C# (CRUD complet)",
+            "Génération de statistiques sur les commandes"
+        ],
+        technologies: ["C#", "WPF", "SQL Server", "Merise", "Visual Studio"],
+        competences: ["Réaliser", "Administrer BD"]
+    },
+    {
+        id: "goldrush",
+        title: "Jeu Vidéo Gold Rush",
+        date: "2022 (SAE S1.01)",
+        contexte: "Premier projet de développement en binôme. Création d'un jeu de plateforme complet.",
+        description: "Développement d'un jeu style 'Mario' avec gestion de la physique, des ennemis et du score.",
+        missions: [
+            "Implémentation de la boucle de jeu et de la physique",
+            "Gestion des collisions et des animations",
+            "Création des niveaux et du système de sauvegarde",
+            "Travail en Pair Programming"
+        ],
+        technologies: ["C#", "WPF", "Algo", "Git"],
+        competences: ["Réaliser", "Algorithmique"]
+    },
+    {
+        id: "install-pi",
+        title: "Serveur Web sur Raspberry Pi",
+        date: "2023",
+        contexte: "Guide d'installation et configuration système.",
+        description: "Mise en place d'un environnement serveur complet sous Linux.",
+        missions: [
+            "Installation de l'OS (Raspbian Lite)",
+            "Configuration réseau (SSH, IP Statique)",
+            "Installation de la stack LAMP (Linux, Apache, MySQL, PHP)",
+            "Rédaction d'un guide technique en anglais"
+        ],
+        technologies: ["Linux", "Bash", "Apache", "SSH"],
+        competences: ["Administrer", "Collaborer"]
+    }
+];
