@@ -431,7 +431,7 @@ const experiences = [
         id: "pi",
         title: "Serveur Raspberry Pi",
         date: "2023",
-        contexte: "Mise en place d'infrastructure système.",
+        contexte: "Mise en place d'infrastructure système sous des conditions spécifiques",
         description: "Installation et configuration d'un serveur Web Linux.",
         missions: [
             "Installation OS et configuration SSH",
