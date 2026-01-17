@@ -1,523 +1,442 @@
-
-    const competences = [
-        {
-            id: "c1",
-            titre: "Réaliser un développement d'application",
-            niveau: "Niveau 2 - Partir des exigences et aller jusqu'à une application complète",
-            description: "Développer — c'est-à-dire concevoir, coder, tester et intégrer — une solution informatique pour un client.",
-            apprentissagesCritiques: [
-                "AC 1 : Élaborer et implémenter les spécifications fonctionnelles et non fonctionnelles à partir des exigences",
-                "AC 2 : Appliquer des principes d'accessibilité et d'ergonomie",
-                "AC 3 : Adopter de bonnes pratiques de conception et de programmation",
-                "AC 4 : Vérifier et valider la qualité de l'application par les tests"
-            ],
-            preuves: [
-                {
-                    titre: "SAE S1.01-S1.02 : Gold Rush - Jeu vidéo en C#/WPF",
-                    contexte: "Développement d'un jeu vidéo de plateforme en binôme dans le cadre de la SAE S1.01 et S1.02. L'objectif était de créer un jeu complet avec 5 niveaux, une interface graphique en 8-bit et un système de gestion des pièces et du temps.",
-                    realisation: [
-                        "Conception d'une architecture MVC pour séparer la logique métier de l'interface",
-                        "Implémentation de 5 niveaux progressifs avec des mécaniques de jeu variées (saut, collecte de pièces, ennemis)",
-                        "Développement d'un système de détection de collisions optimisé (250 tests/seconde pour les pièces, 200 tests/seconde pour les sols)",
-                        "Création d'une interface graphique complète avec menu, paramétrage des touches, écrans de victoire/défaite",
-                        "Mise en place de tests de performance : consommation mémoire stable entre 103Mo (menu) et 156Mo (niveau 5)",
-                        "Gestion d'assets graphiques avec optimisation des sprites et animations"
-                    ],
-                    technos: ["C#", "WPF", "XAML", "Visual Studio"],
-                    liensAC: {
-                        "AC1": "Conception complète du jeu depuis le cahier des charges jusqu'à l'implémentation (diagramme de classes, cinématique des écrans)",
-                        "AC2": "Interface utilisateur intuitive avec paramétrage personnalisable des touches de jeu",
-                        "AC3": "Application de bonnes pratiques : séparation des responsabilités, nommage cohérent, modularisation du code",
-                        "AC4": "Tests de validation fonctionnelle et tests de performance (consommation mémoire, nombre de tests/seconde)"
-                    },
-                    images: [
-                        "images/goldrush/architecture.png",
-                        "images/goldrush/gameplay.png",
-                        "images/goldrush/performances.png"
-                    ],
-                    documents: ["11-3-SERVONNET-RANC.pdf"]
-                },
-                {
-                    titre: "SAE S2.04 : Interface de gestion pour le SDIS 69",
-                    contexte: "Développement d'une Interface Homme-Machine (IHM) en équipe de 3 pour le Service Départemental d'Incendie et de Secours. L'application permet la gestion des achats de matériel et de véhicules pour l'organisation.",
-                    realisation: [
-                        "Création de 8 classes métier correspondant aux principales tables du MCD",
-                        "Implémentation de méthodes Read() pour l'affichage des données dans les DataGrid",
-                        "Développement d'une méthode Create() pour la création de commandes",
-                        "Conception d'une cinématique complète des écrans (connexion, menu, recherche, commande, visualisation)",
-                        "Mise en place d'un système de recherche avec filtres multiples (habilitation, type, catégorie)",
-                        "Gestion de la validation des commandes avec récapitulatif et informations de livraison"
-                    ],
-                    technos: ["C#", "WPF", "PostgreSQL", "XAML"],
-                    liensAC: {
-                        "AC1": "Élaboration de spécifications à partir des besoins du SDIS : diagrammes de séquence, use case et classe",
-                        "AC2": "Interface ergonomique adaptée aux sapeurs-pompiers avec navigation intuitive et guidage utilisateur",
-                        "AC3": "Architecture en couches avec séparation des responsabilités (classes métier, accès données, interface)",
-                        "AC4": "Validation des données saisies et gestion des erreurs utilisateur"
-                    },
-                    images: [
-                        "images/sdis/architecture.png",
-                        "images/sdis/interface-recherche.png",
-                        "images/sdis/interface-commande.png"
-                    ],
-                    documents: ["Rapport.pdf", "Cahier des charges.docx"]
-                },
-                {
-                    titre: "SAE S3.A.01 / S4.A.01 : Application de gestion UBER (Projet majeur)",
-                    contexte: "Développement d'une application complète de gestion pour UBER en équipe de 4-5 étudiants. Projet ambitieux incluant la gestion des courses VTC, commandes de repas (Uber Eats) et réservation de vélos électriques. Application développée avec une architecture .NET moderne et une interface Vue.js.",
-                    realisation: [
-                        "Conception et implémentation d'une API REST en .NET avec approche Code First",
-                        "Création de plus de 46 modèles entités pour gérer la complexité métier",
-                        "Développement de 80+ DTOs (Data Transfer Objects) pour optimiser les échanges client-serveur",
-                        "Implémentation de 80+ User Stories couvrant tous les cas d'usage",
-                        "Développement d'un client web en Vue.js avec plus de 20 pages/composants",
-                        "Mise en place d'une base de données PostgreSQL avec relations complexes",
-                        "Implémentation de la sécurité : cryptage des mots de passe, tokens JWT",
-                        "Tests unitaires avec Moq et tests end-to-end avec Cypress",
-                        "Mise en place d'un pipeline CI/CD sur Microsoft Azure",
-                        "Application des design patterns : Repository, Dependency Injection, Factory",
-                        "Gestion de trois flux métiers distincts : VTC, livraison de repas, location de vélos"
-                    ],
-                    technos: [".NET Core", "C#", "Entity Framework", "PostgreSQL", "Vue.js", "JWT", "Azure DevOps", "Cypress", "Moq"],
-                    liensAC: {
-                        "AC1": "Analyse complète des besoins UBER avec 80+ User Stories, conception d'une architecture à 46 modèles et 80 DTOs",
-                        "AC2": "Interface Vue.js moderne et accessible, routing optimisé, gestion d'état avec Pinia",
-                        "AC3": "Application rigoureuse des design patterns (Repository, DI, Factory), séparation des responsabilités, code documenté",
-                        "AC4": "Suite complète de tests : unitaires (Moq), end-to-end (Cypress), couverture de code élevée"
-                    },
-                    images: [
-                        "images/uber/architecture-globale.png",
-                        "images/uber/modeles-donnees.png",
-                        "images/uber/interface-client.png",
-                        "images/uber/pipeline-cicd.png"
-                    ],
-                    documents: ["S4.A.01.docx", "2024SAE3.01_Sujet1_UBER_V1.pdf"],
-                    noteImportante: "Projet d'envergure professionnelle démontrant une maîtrise complète du cycle de développement"
-                }
-            ],
-            couleur: "#3498db"
-        },
-        {
-            id: "c2",
-            titre: "Optimiser des applications",
-            niveau: "Niveau 2 - Sélectionner les algorithmes adéquats pour répondre à un problème donné",
-            description: "Proposer des applications informatiques optimisées en fonction de critères spécifiques : temps d'exécution, précision, consommation de ressources…",
-            apprentissagesCritiques: [
-                "AC 1 : Choisir des structures de données complexes adaptées au problème",
-                "AC 2 : Utiliser des techniques algorithmiques adaptées pour des problèmes complexes",
-                "AC 3 : Comprendre les enjeux et moyens de sécurisation des données et du code",
-                "AC 4 : Évaluer l'impact environnemental et sociétal des solutions proposées"
-            ],
-            preuves: [
-                {
-                    titre: "SAE S1.02 : Optimisation algorithmique dans Gold Rush",
-                    contexte: "Optimisation des systèmes de détection de collisions et de gestion des animations dans le jeu Gold Rush pour garantir des performances fluides.",
-                    realisation: [
-                        "Implémentation d'un système de détection de collisions optimisé : 250 tests/seconde pour les pièces",
-                        "Optimisation de la détection sol-joueur : 200 tests/seconde sur 4 sols par niveau",
-                        "Choix de structures de données adaptées : listes d'hitboxes pour les éléments du jeu",
-                        "Gestion efficace de la mémoire : consommation stable de 103Mo à 156Mo malgré l'augmentation de la complexité",
-                        "Analyse comparative de différentes approches algorithmiques pour la détection de collisions"
-                    ],
-                    technos: ["C#", "Algorithmes de collision", "Optimisation mémoire"],
-                    liensAC: {
-                        "AC1": "Utilisation de listes et de structures pour optimiser les tests de collision",
-                        "AC2": "Algorithmes de détection rectangle-rectangle optimisés avec arrêt précoce",
-                        "AC4": "Mesure et documentation de la consommation mémoire à chaque étape du jeu"
-                    },
-                    images: [
-                        "images/goldrush/algorithme-collision.png",
-                        "images/goldrush/performances-memoire.png"
-                    ],
-                    documents: ["11-3-SERVONNET-RANC.pdf"]
-                },
-                {
-                    titre: "SAE S4.A.01 : Architecture et optimisation UBER",
-                    contexte: "Optimisation d'une application complexe avec 46 modèles et 80 DTOs, nécessitant une attention particulière aux performances et à la scalabilité.",
-                    realisation: [
-                        "Implémentation du pattern Repository pour optimiser l'accès aux données",
-                        "Utilisation de DTOs pour réduire la charge réseau (80+ DTOs spécialisés)",
-                        "Mise en place de l'injection de dépendances pour améliorer la testabilité et la maintenabilité",
-                        "Optimisation des requêtes SQL via Entity Framework",
-                        "Analyse de l'impact environnemental : comparaison serveur Azure vs PHP OVH",
-                        "Mise en cache des données fréquemment consultées",
-                        "Tests de charge et optimisation des temps de réponse API"
-                    ],
-                    technos: [".NET", "Entity Framework", "Design Patterns", "Azure", "PostgreSQL"],
-                    liensAC: {
-                        "AC1": "Architecture avec 46 modèles organisés, DTOs pour optimiser les transferts",
-                        "AC2": "Patterns Repository et Factory pour gérer la complexité",
-                        "AC3": "Sécurisation : cryptage bcrypt, tokens JWT, validation des données",
-                        "AC4": "Étude comparative de l'impact environnemental Azure vs OVH"
-                    },
-                    images: [
-                        "images/uber/architecture-optimisation.png",
-                        "images/uber/impact-environnemental.png"
-                    ],
-                    documents: ["S4.A.01.docx"]
-                }
-            ],
-            couleur: "#e74c3c"
-        },
-        {
-            id: "c3",
-            titre: "Administrer des systèmes informatiques communicants",
-            niveau: "Niveau 2 - Déployer des services dans une architecture réseau",
-            description: "Installer, configurer, mettre à disposition, maintenir en conditions opérationnelles des infrastructures, des services et des réseaux.",
-            apprentissagesCritiques: [
-                "AC 1 : Concevoir et développer des applications communicantes",
-                "AC 2 : Utiliser des serveurs et des services réseaux virtualisés",
-                "AC 3 : Sécuriser les services et données d'un système"
-            ],
-            preuves: [
-                {
-                    titre: "SAE S2.03 : Installation serveur web sur Raspberry Pi",
-                    contexte: "Installation et configuration complète d'un environnement de développement web sur Raspberry Pi 2 dans le cadre d'un projet de réduction des coûts d'hébergement.",
-                    realisation: [
-                        "Installation de Raspberry Pi OS Lite (système Linux minimal)",
-                        "Configuration du réseau : adresse IP statique, passerelle, DNS",
-                        "Installation et configuration d'Apache2 comme serveur web",
-                        "Installation de PHP et PostgreSQL pour une stack complète",
-                        "Configuration de services de partage de fichiers entre Windows et Linux",
-                        "Mise en place d'un pare-feu (UFW) avec règles de sécurité",
-                        "Tests de connectivité réseau et de fonctionnement des services",
-                        "Documentation technique complète en anglais (Installation Guide)"
-                    ],
-                    technos: ["Raspberry Pi", "Linux", "Apache", "PHP", "PostgreSQL", "UFW"],
-                    liensAC: {
-                        "AC1": "Configuration réseau complète, services web communicants",
-                        "AC2": "Mise en place d'une infrastructure serveur sur matériel embarqué",
-                        "AC3": "Configuration pare-feu, sécurisation SSH, gestion des ports"
-                    },
-                    images: [
-                        "images/raspberry/architecture-reseau.png",
-                        "images/raspberry/config-apache.png",
-                        "images/raspberry/tests-securite.png"
-                    ],
-                    documents: ["installationGuideRaspberry.docx"]
-                },
-                {
-                    titre: "SAE S2.03 : Machine virtuelle Ubuntu 20.04",
-                    contexte: "Installation et configuration d'une machine virtuelle Ubuntu pour environnement de développement, dans une optique de virtualisation et d'optimisation des ressources.",
-                    realisation: [
-                        "Création d'une VM Ubuntu 20.04 sur VirtualBox",
-                        "Installation d'un environnement de développement complet : Visual Studio Code, C#, PHP",
-                        "Configuration de MonoGame pour le développement de jeux",
-                        "Installation et configuration d'Apache2 comme serveur web",
-                        "Mise en place d'un système de partage de fichiers entre hôte Windows et VM Linux",
-                        "Configuration réseau en mode pont pour accès externe",
-                        "Installation de XFCE4 comme environnement de bureau léger",
-                        "Documentation complète du processus d'installation en anglais"
-                    ],
-                    technos: ["Ubuntu", "VirtualBox", "Apache", "C#", "MonoGame", "XFCE"],
-                    liensAC: {
-                        "AC1": "Configuration réseau pour communication entre hôte et VM",
-                        "AC2": "Maîtrise de la virtualisation : création, configuration, optimisation",
-                        "AC3": "Mise en place des Guest Additions, partage sécurisé de fichiers"
-                    },
-                    images: [
-                        "images/ubuntu/architecture-vm.png",
-                        "images/ubuntu/environnement-dev.png",
-                        "images/ubuntu/partage-fichiers.png"
-                    ],
-                    documents: ["installationGuideUbuntu.docx"]
-                },
-                {
-                    titre: "SAE S4.A.01 : Déploiement CI/CD sur Azure",
-                    contexte: "Mise en place d'une infrastructure de déploiement continu pour l'application UBER, avec intégration Azure DevOps et conteneurisation.",
-                    realisation: [
-                        "Configuration d'un pipeline CI/CD sur Microsoft Azure",
-                        "Déploiement automatisé de l'API .NET",
-                        "Configuration de la base de données PostgreSQL sur Azure",
-                        "Mise en place de la virtualisation avec conteneurs",
-                        "Configuration des services réseaux pour l'application web",
-                        "Sécurisation : HTTPS, tokens JWT, CORS",
-                        "Monitoring et logs des services déployés"
-                    ],
-                    technos: ["Azure", "CI/CD", "Docker", "PostgreSQL", ".NET"],
-                    liensAC: {
-                        "AC1": "API REST communicante avec client Vue.js via HTTPS",
-                        "AC2": "Déploiement sur infrastructure cloud virtualisée",
-                        "AC3": "Sécurisation complète : JWT, HTTPS, gestion CORS, cryptage"
-                    },
-                    images: [
-                        "images/uber/pipeline-azure.png",
-                        "images/uber/architecture-cloud.png"
-                    ],
-                    documents: ["S4.A.01.docx"]
-                }
-            ],
-            couleur: "#2ecc71"
-        },
-        {
-            id: "c4",
-            titre: "Gérer des données de l'information",
-            niveau: "Niveau 2 - Optimiser une base de données, interagir avec une application et mettre en œuvre la sécurité",
-            description: "Concevoir, gérer, administrer et exploiter les données de l'entreprise et mettre à disposition toutes les informations pour un bon pilotage de l'entreprise.",
-            apprentissagesCritiques: [
-                "AC 1 : Optimiser les modèles de données de l'entreprise",
-                "AC 2 : Assurer la confidentialité des données (intégrité et sécurité)",
-                "AC 3 : Organiser la restitution de données à travers la programmation et la visualisation",
-                "AC 4 : Manipuler des données hétérogènes"
-            ],
-            preuves: [
-                {
-                    titre: "SAE S2.04 : Base de données pour SDIS 69",
-                    contexte: "Conception et implémentation d'une base de données complète pour la gestion des achats du Service Départemental d'Incendie et de Secours.",
-                    realisation: [
-                        "Création d'un MCD/MLD complet avec PowerAMC",
-                        "Implémentation sur PostgreSQL avec contraintes d'intégrité",
-                        "Développement de 8 classes métier en C# pour l'accès aux données",
-                        "Création de méthodes Read() pour la visualisation dans des DataGrid",
-                        "Implémentation du CRUD complet pour les commandes",
-                        "Gestion des relations complexes (client, matériel, commande, transport)",
-                        "Mise en place de contraintes CHECK et UNIQUE",
-                        "Requêtes SQL optimisées pour la recherche et le filtrage"
-                    ],
-                    technos: ["PostgreSQL", "PowerAMC", "C#", "SQL"],
-                    liensAC: {
-                        "AC1": "Modèle de données normalisé avec MCD/MLD optimisé",
-                        "AC2": "Contraintes d'intégrité référentielle, validation des données",
-                        "AC3": "Interface de visualisation avec DataGrid, requêtes complexes",
-                        "AC4": "Gestion de données variées : matériel, commandes, transport, utilisateurs"
-                    },
-                    images: [
-                        "images/sdis/mcd.png",
-                        "images/sdis/mld.png",
-                        "images/sdis/requetes.png"
-                    ],
-                    documents: ["Rapport.pdf", "Cahier des charges.docx"]
-                },
-                {
-                    titre: "SAE S2.04 : Analyse de données pour Foxconn Industries",
-                    contexte: "Création d'une base de données de gestion de production avec génération de données de test et exploitation via requêtes SQL complexes.",
-                    realisation: [
-                        "Conception MCD/MLD pour un système de gestion de production",
-                        "Génération de données de test : 80 annonces restaurants, 30 chauffeurs, 50 utilisateurs, 100 réservations",
-                        "Implémentation de 20 requêtes SQL complexes (agrégations, jointures, sous-requêtes)",
-                        "Utilisation de fonctions d'agrégation (COUNT, SUM, AVG, MIN, MAX)",
-                        "Requêtes avec GROUP BY, HAVING, ORDER BY",
-                        "Optimisation avec index et analyse des plans d'exécution",
-                        "Génération de rapports et statistiques (temps de production, coûts, nombre de produits)",
-                        "Utilisation de CASE pour créer des catégories dynamiques"
-                    ],
-                    technos: ["PostgreSQL", "SQL avancé", "PowerAMC", "Génération de données"],
-                    liensAC: {
-                        "AC1": "Modèle relationnel optimisé avec clés étrangères et contraintes",
-                        "AC2": "Gestion des droits, validation des données, intégrité référentielle",
-                        "AC3": "20 requêtes d'analyse pour la prise de décision métier",
-                        "AC4": "Manipulation de données variées : produits, opérations, clients, commandes"
-                    },
-                    images: [
-                        "images/foxconn/mcd-mld.png",
-                        "images/foxconn/requetes-complexes.png",
-                        "images/foxconn/statistiques.png"
-                    ],
-                    documents: ["MCD-MLD (1).docx", "insertion.docx"]
-                },
-                {
-                    titre: "SAE S3/S4 UBER : Base de données complexe PostgreSQL",
-                    contexte: "Conception et optimisation d'une base de données PostgreSQL pour gérer 3 flux métiers (VTC, livraison, vélos) avec 46 modèles.",
-                    realisation: [
-                        "Architecture Code First avec Entity Framework",
-                        "46 modèles entités avec relations complexes (1-N, N-N, héritage)",
-                        "Migrations automatiques pour la gestion du schéma",
-                        "Index sur les colonnes fréquemment requêtées",
-                        "Cryptage des mots de passe avec bcrypt",
-                        "Stockage sécurisé des informations de carte bancaire",
-                        "Requêtes optimisées avec LINQ et projections (80+ DTOs)",
-                        "Transactions pour garantir la cohérence des données",
-                        "Génération de jeu de données de test conséquent"
-                    ],
-                    technos: ["PostgreSQL", "Entity Framework Core", ".NET", "LINQ", "Bcrypt"],
-                    liensAC: {
-                        "AC1": "Modèle avec 46 entités optimisé, migrations, index performants",
-                        "AC2": "Cryptage bcrypt, sécurisation des données bancaires, transactions",
-                        "AC3": "80+ DTOs pour la restitution optimale, requêtes LINQ complexes",
-                        "AC4": "Gestion de 3 métiers distincts : courses VTC, livraisons, réservations vélos"
-                    },
-                    images: [
-                        "images/uber/modele-donnees-complet.png",
-                        "images/uber/migrations.png",
-                        "images/uber/securite-donnees.png"
-                    ],
-                    documents: ["S4.A.01.docx", "2024SAE3.01_Sujet1_UBER_V1.pdf"]
-                }
-            ],
-            couleur: "#9b59b6"
-        },
-        {
-            id: "c5",
-            titre: "Conduire un projet",
-            niveau: "Niveau 2 - Appliquer une démarche de suivi de projet",
-            description: "Satisfaire les besoins des utilisateurs au regard de la chaîne de valeur du client, organiser et piloter un projet informatique avec des méthodes classiques ou agiles.",
-            apprentissagesCritiques: [
-                "AC 1 : Identifier les processus présents dans une organisation",
-                "AC 2 : Formaliser les besoins du client et de l'utilisateur",
-                "AC 3 : Identifier les critères de faisabilité d'un projet informatique",
-                "AC 4 : Définir et mettre en œuvre une démarche de suivi de projet"
-            ],
-            preuves: [
-                {
-                    titre: "SAE S2.04 : Cahier des charges SDIS 69",
-                    contexte: "Élaboration d'un cahier des charges complet pour un système de gestion d'achats, incluant l'analyse des processus métier et la formalisation des besoins.",
-                    realisation: [
-                        "Analyse des besoins fonctionnels et non fonctionnels",
-                        "Création de 3 diagrammes de collaboration pour les processus métier",
-                        "Élaboration de diagrammes de use case avec descriptions textuelles",
-                        "Réalisation de diagrammes de séquence pour les scénarios principaux",
-                        "Création d'un diagramme de classe métier complet",
-                        "Modélisation des processus d'achat de matériel et de véhicules",
-                        "Définition des acteurs et de leurs rôles (sapeur, responsable, chef)",
-                        "Spécification des exigences de performance et sécurité"
-                    ],
-                    technos: ["UML", "Diagrammes de collaboration", "Use Case", "Séquence"],
-                    liensAC: {
-                        "AC1": "Analyse des processus SDIS : achat matériel, gestion véhicules",
-                        "AC2": "Formalisation via use cases, diagrammes de séquence, classes métier",
-                        "AC3": "Évaluation de la faisabilité technique et organisationnelle",
-                        "AC4": "Documentation structurée pour le suivi du projet"
-                    },
-                    images: [
-                        "images/sdis/use-case.png",
-                        "images/sdis/diagramme-sequence.png",
-                        "images/sdis/classe-metier.png"
-                    ],
-                    documents: ["Cahier des charges.docx"]
-                },
-                {
-                    titre: "SAE S3/S4 UBER : Gestion de projet Scrum avec Azure DevOps",
-                    contexte: "Pilotage d'un projet de grande envergure (80+ User Stories) avec méthodologie Scrum et suivi sur Azure DevOps.",
-                    realisation: [
-                        "Découpage du projet en 5 sprints avec planning détaillé",
-                        "Création de 80+ User Stories avec critères d'acceptation",
-                        "Configuration d'Azure DevOps : Board, Sprints, Backlogs",
-                        "Suivi des tâches avec durée prévue/réelle et statut",
-                        "Organisation de sprint reviews (dont une en anglais)",
-                        "Rétrospectives d'équipe pour amélioration continue",
-                        "Gestion de la vélocité de l'équipe (4-5 personnes)",
-                        "Utilisation de Git pour la gestion de version",
-                        "Documentation : dossier technique, dossier de recette",
-                        "Évaluation de la répartition du travail dans l'équipe"
-                    ],
-                    technos: ["Azure DevOps", "Scrum", "Git", "Méthodologie Agile"],
-                    liensAC: {
-                        "AC1": "Analyse des processus UBER : VTC, livraison, location vélos",
-                        "AC2": "80+ User Stories formalisées avec critères d'acceptation",
-                        "AC3": "Évaluation de faisabilité par sprint, gestion des priorités",
-                        "AC4": "Suivi rigoureux : Azure DevOps, durées prévues/réelles, sprints"
-                    },
-                    images: [
-                        "images/uber/azure-board.png",
-                        "images/uber/sprint-backlog.png",
-                        "images/uber/burndown-chart.png"
-                    ],
-                    documents: ["S4.A.01.docx", "2024SAE3.01_Sujet1_UBER_V1.pdf"]
-                }
-            ],
-            couleur: "#f39c12"
-        },
-        {
-        id: "c6",
-        titre: "Collaborer au sein d'une équipe informatique",
-        niveau: "Niveau 2 - Situer son rôle et ses missions au sein d'une équipe informatique",
-        description: "Acquérir, développer et exploiter les aptitudes nécessaires pour travailler efficacement dans une équipe informatique pluridisciplinaire.",
-        apprentissagesCritiques: [
-            "AC 1 : Appréhender l'écosystème numérique",
-            "AC 2 : Découvrir les aptitudes requises selon les différents secteurs informatiques",
-            "AC 3 : Identifier les statuts, les fonctions et les rôles de chaque membre d'une équipe pluridisciplinaire",
-            "AC 4 : Acquérir les compétences interpersonnelles pour travailler en équipe"
-        ],
-        preuves: [
+const competences = [
+    {
+        id: "c1",
+        titre: "C1 - Réaliser",
+        description: "Développer des applications informatiques complexes (conception, codage, tests, intégration).",
+        couleur: "#3498db", // Bleu
+        niveaux: [
             {
-                titre: "Projet UBER (SAE S3.A.01 / S4.A.01)",
-                description: "Développement d'une application complexe (API .NET & Client Vue.js) au sein d'une équipe de 4-5 étudiants.",
-                details: [
-                    "Organisation du travail en méthode Agile",
-                    "Répartition des rôles : Développeur Backend, Frontend, et Gestionnaire BDD",
-                    "Gestion de versions avec Git et résolution des conflits",
-                    "Mise en place de Code Reviews pour assurer la qualité du code"
+                niveau: "Niveau 1",
+                titre: "Développer des applications informatiques simples",
+                ac: [
+                    { id: "AC1", text: "Implémenter des conceptions simples" },
+                    { id: "AC2", text: "Élaborer des conceptions simples" },
+                    { id: "AC3", text: "Faire des essais et évaluer leurs résultats" }
+                ],
+                preuves: [
+                    {
+                        titre: "Jeu Gold Rush (SAE S1.01)",
+                        contexte: "Développement d'un jeu de plateforme en C# et WPF en binôme.",
+                        realisation: [
+                            "Conception du diagramme de classes",
+                            "Implémentation de la boucle de jeu et des déplacements",
+                            "Gestion des collisions joueur/décor"
+                        ],
+                        technos: ["C#", "WPF", "Visual Studio"],
+                        images: ["images/goldrush/gameplay.png"]
+                    }
                 ]
             },
             {
-                titre: "Projet SDIS 69 (SAE S2.04)",
-                description: "Conception et développement d'une application de gestion pour les pompiers en équipe de 3.",
-                details: [
-                    "Coordination pour la conception de la Base de Données (MCD/MLD)",
-                    "Partage des tâches pour le développement des interfaces WPF",
-                    "Rédaction collective du Cahier des charges et du Rapport technique"
+                niveau: "Niveau 2",
+                titre: "Partir des exigences et aller jusqu'à une application complète",
+                ac: [
+                    { id: "AC1", text: "Élaborer et implémenter les spécifications" },
+                    { id: "AC2", text: "Appliquer des principes d’accessibilité et d’ergonomie" },
+                    { id: "AC3", text: "Adopter de bonnes pratiques de conception" },
+                    { id: "AC4", text: "Vérifier et valider la qualité de l'application" }
+                ],
+                preuves: [
+                    {
+                        titre: "Application UBER (SAE S3/S4)",
+                        contexte: "Développement complet d'une solution VTC/Livraison en équipe de 4.",
+                        realisation: [
+                            "Architecture N-Tiers avec API REST .NET 8",
+                            "Interface client Vue.js responsive et ergonomique",
+                            "Tests unitaires (Moq) et End-to-End (Cypress)",
+                            "Pipeline CI/CD sur Azure DevOps"
+                        ],
+                        technos: [".NET 8", "Vue.js", "Azure", "Cypress"],
+                        images: ["images/uber/architecture.png"]
+                    },
+                    {
+                        titre: "Gestion SDIS 69 (SAE S2.04)",
+                        contexte: "Application WPF pour la gestion du matériel des pompiers.",
+                        realisation: [
+                            "Respect du cahier des charges fonctionnel",
+                            "Interface utilisateur adaptée aux besoins des pompiers",
+                            "Validation des formulaires de commande"
+                        ],
+                        technos: ["WPF", "C#", "SQL Server"],
+                        images: ["images/sdis/interface.png"]
+                    }
                 ]
             },
             {
-                titre: "Gold Rush (SAE S1.01)",
-                description: "Création d'un jeu vidéo en C# en binôme.",
-                details: [
-                    "Travail en Pair Programming",
-                    "Communication constante pour l'intégration des algorithmes et de l'interface graphique"
+                niveau: "Niveau 3",
+                titre: "Adapter des applications sur un ensemble de supports",
+                ac: [
+                    { id: "AC1", text: "Choisir et implémenter les architectures adaptées" },
+                    { id: "AC2", text: "Faire évoluer une application existante" },
+                    { id: "AC3", text: "Intégrer des solutions dans un environnement de production" }
+                ],
+                preuves: [
+                    {
+                        titre: "Évolution Architecture UBER",
+                        contexte: "Passage à une architecture micro-services et déploiement cloud.",
+                        realisation: [
+                            "Refactoring du backend pour isoler les services",
+                            "Déploiement conteneurisé sur Azure (Docker)",
+                            "Ajout du module de location de vélos"
+                        ],
+                        technos: ["Docker", "Azure Cloud", "Microservices"],
+                        images: []
+                    }
                 ]
             }
-        ],
-        couleur: "#8e44ad" 
+        ]
+    },
+    {
+        id: "c2",
+        titre: "C2 - Optimiser",
+        description: "Proposer des applications optimisées (temps d'exécution, précision, consommation de ressources).",
+        couleur: "#e74c3c", // Rouge
+        niveaux: [
+            {
+                niveau: "Niveau 1",
+                titre: "Appréhender et construire des algorithmes",
+                ac: [
+                    { id: "AC1", text: "Analyser un problème avec une méthode" },
+                    { id: "AC2", text: "Comparer des algorithmes" }
+                ],
+                preuves: [
+                    {
+                        titre: "Algorithmes Gold Rush",
+                        contexte: "Optimisation des mécaniques de jeu.",
+                        realisation: [
+                            "Algorithme de gravité et de saut",
+                            "Optimisation de la détection de collision (Hitbox)"
+                        ],
+                        technos: ["Algorithmique", "C#"],
+                        images: []
+                    }
+                ]
+            },
+            {
+                niveau: "Niveau 2",
+                titre: "Sélectionner les algorithmes adéquats",
+                ac: [
+                    { id: "AC1", text: "Choisir des structures de données complexes" },
+                    { id: "AC2", text: "Utiliser des techniques algorithmiques adaptées" },
+                    { id: "AC3", text: "Comprendre les enjeux de la sécurisation" },
+                    { id: "AC4", text: "Évaluer l'impact environnemental" }
+                ],
+                preuves: [
+                    {
+                        titre: "Optimisation UBER",
+                        contexte: "Performance et sécurité de l'application.",
+                        realisation: [
+                            "Utilisation de DTOs pour réduire la charge réseau",
+                            "Sécurisation des mots de passe (Bcrypt) et API (JWT)",
+                            "Comparatif Green IT : Azure vs Serveur dédié"
+                        ],
+                        technos: ["Bcrypt", "JWT", "LINQ"],
+                        images: []
+                    }
+                ]
+            },
+            {
+                niveau: "Niveau 3",
+                titre: "Analyser et optimiser des applications",
+                ac: [
+                    { id: "AC1", text: "Anticiper les résultats de diverses métriques" },
+                    { id: "AC2", text: "Profiler, analyser et justifier le comportement d'un code" },
+                    { id: "AC3", text: "Utiliser des méthodes dédiées (IA, parallélisme...)" }
+                ],
+                preuves: [
+                    {
+                        titre: "Profiling Avancé",
+                        contexte: "Analyse des performances de l'API.",
+                        realisation: [
+                            "Utilisation des outils de diagnostic Visual Studio",
+                            "Programmation asynchrone (Async/Await) pour la scalabilité",
+                            "Tests de charge sur l'API"
+                        ],
+                        technos: ["Visual Studio Profiler", "Async/Await"],
+                        images: []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        id: "c3",
+        titre: "C3 - Administrer",
+        description: "Installer, configurer et maintenir des systèmes et réseaux.",
+        couleur: "#2ecc71", // Vert
+        niveaux: [
+            {
+                niveau: "Niveau 1",
+                titre: "Installer et configurer un poste de travail",
+                ac: [
+                    { id: "AC1", text: "Identifier les différents composants matériels/logiciels" },
+                    { id: "AC2", text: "Installer et configurer un système d'exploitation" }
+                ],
+                preuves: [
+                    {
+                        titre: "Installation VM Ubuntu",
+                        contexte: "Mise en place d'un environnement de développement Linux.",
+                        realisation: [
+                            "Installation sur VirtualBox",
+                            "Configuration des partitions et utilisateurs"
+                        ],
+                        technos: ["VirtualBox", "Ubuntu", "Bash"],
+                        images: []
+                    }
+                ]
+            },
+            {
+                niveau: "Niveau 2",
+                titre: "Déployer des services dans une architecture réseau",
+                ac: [
+                    { id: "AC1", text: "Concevoir et développer des applications communicantes" },
+                    { id: "AC2", text: "Utiliser des serveurs et services réseaux virtualisés" },
+                    { id: "AC3", text: "Sécuriser les services et données d'un système" }
+                ],
+                preuves: [
+                    {
+                        titre: "Serveur Web Raspberry Pi",
+                        contexte: "Déploiement d'un serveur web domestique.",
+                        realisation: [
+                            "Installation et configuration Apache/PHP/MySQL",
+                            "Configuration du pare-feu (UFW) et SSH",
+                            "Mise en réseau (IP statique, DNS)"
+                        ],
+                        technos: ["Raspberry Pi", "Apache", "SSH", "Linux"],
+                        images: []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        id: "c4",
+        titre: "C4 - Gérer des données",
+        description: "Concevoir, gérer, administrer et exploiter des bases de données.",
+        couleur: "#9b59b6", // Violet
+        niveaux: [
+            {
+                niveau: "Niveau 1",
+                titre: "Concevoir et mettre en place une base de données",
+                ac: [
+                    { id: "AC1", text: "Modéliser et créer une base de données relationnelle" },
+                    { id: "AC2", text: "Requêter la base de données" }
+                ],
+                preuves: [
+                    {
+                        titre: "Base de données Foxconn",
+                        contexte: "Création d'une BDD de production industrielle.",
+                        realisation: [
+                            "Conception MCD/MLD",
+                            "Écriture de 20 requêtes SQL complexes (Jointures, Agrégats)"
+                        ],
+                        technos: ["SQL", "MCD", "PostgreSQL"],
+                        images: []
+                    }
+                ]
+            },
+            {
+                niveau: "Niveau 2",
+                titre: "Optimiser une base de données et interagir avec une application",
+                ac: [
+                    { id: "AC1", text: "Optimiser les modèles de données" },
+                    { id: "AC2", text: "Assurer la confidentialité et l'intégrité" },
+                    { id: "AC3", text: "Organiser la restitution de données" }
+                ],
+                preuves: [
+                    {
+                        titre: "BDD Uber & SDIS",
+                        contexte: "Gestion de données complexes pour applications métiers.",
+                        realisation: [
+                            "Normalisation des données (46 tables pour Uber)",
+                            "Mise en place de contraintes d'intégrité et sécurité",
+                            "Utilisation d'ORM (Entity Framework) pour l'interaction"
+                        ],
+                        technos: ["Entity Framework", "PostgreSQL", "SQL Server"],
+                        images: []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        id: "c5",
+        titre: "C5 - Conduire un projet",
+        description: "Satisfaire les besoins des utilisateurs et piloter un projet informatique.",
+        couleur: "#f39c12", // Orange
+        niveaux: [
+            {
+                niveau: "Niveau 1",
+                titre: "Identifier les besoins métiers",
+                ac: [
+                    { id: "AC1", text: "Identifier les processus métier" },
+                    { id: "AC2", text: "Formaliser les besoins" }
+                ],
+                preuves: [
+                    {
+                        titre: "Analyse SDIS 69",
+                        contexte: "Étude préalable pour le logiciel des pompiers.",
+                        realisation: [
+                            "Analyse des processus d'achat",
+                            "Rédaction du Cahier des charges fonctionnel"
+                        ],
+                        technos: ["UML", "Word"],
+                        images: []
+                    }
+                ]
+            },
+            {
+                niveau: "Niveau 2",
+                titre: "Appliquer une démarche de suivi de projet",
+                ac: [
+                    { id: "AC1", text: "Formaliser les besoins du client" },
+                    { id: "AC2", text: "Définir et mettre en œuvre une démarche de suivi" }
+                ],
+                preuves: [
+                    {
+                        titre: "Gestion de projet Agile UBER",
+                        contexte: "Pilotage d'un projet de 6 mois en équipe.",
+                        realisation: [
+                            "Rédaction du Backlog et des User Stories",
+                            "Suivi des Sprints via Azure DevOps",
+                            "Animation des cérémonies Scrum"
+                        ],
+                        technos: ["Scrum", "Azure DevOps", "Jira"],
+                        images: []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        id: "c6",
+        titre: "C6 - Collaborer",
+        description: "Travailler efficacement au sein d'une équipe informatique.",
+        couleur: "#1abc9c", // Turquoise
+        niveaux: [
+            {
+                niveau: "Niveau 1",
+                titre: "Identifier ses aptitudes pour travailler en équipe",
+                ac: [
+                    { id: "AC1", text: "Identifier les rôles dans une équipe" },
+                    { id: "AC2", text: "Communiquer au sein de l'équipe" }
+                ],
+                preuves: [
+                    {
+                        titre: "Binôme Gold Rush",
+                        contexte: "Premier projet de développement en duo.",
+                        realisation: [
+                            "Répartition des tâches (Design / Code)",
+                            "Communication quotidienne et entraide"
+                        ],
+                        technos: ["Communication", "Pair Programming"],
+                        images: []
+                    }
+                ]
+            },
+            {
+                niveau: "Niveau 2",
+                titre: "Situer son rôle et ses missions",
+                ac: [
+                    { id: "AC1", text: "Appréhender l’écosystème numérique" },
+                    { id: "AC2", text: "Identifier les statuts et rôles" },
+                    { id: "AC3", text: "Acquérir les compétences interpersonnelles" }
+                ],
+                preuves: [
+                    {
+                        titre: "Travail d'équipe UBER",
+                        contexte: "Équipe de 4 développeurs avec rôles définis.",
+                        realisation: [
+                            "Définition des rôles : Lead Tech, Frontend, Backend",
+                            "Mise en place du workflow Git (Gitflow)",
+                            "Revues de code (Merge Requests) systématiques"
+                        ],
+                        technos: ["Git", "Code Review", "Teams"],
+                        images: []
+                    }
+                ]
+            },
+            {
+                niveau: "Niveau 3",
+                titre: "Manager une équipe informatique",
+                ac: [
+                    { id: "AC1", text: "Organiser et partager une veille numérique" },
+                    { id: "AC2", text: "Identifier les enjeux de l'économie de l'innovation" },
+                    { id: "AC3", text: "Guider la conduite du changement" },
+                    { id: "AC4", text: "Accompagner le management de projet" }
+                ],
+                preuves: [
+                    {
+                        titre: "Lead Developer UBER",
+                        contexte: "Coordination technique de l'équipe.",
+                        realisation: [
+                            "Choix de la stack technique et formation des pairs",
+                            "Gestion des conflits techniques",
+                            "Planification des livraisons"
+                        ],
+                        technos: ["Leadership", "Mentoring"],
+                        images: []
+                    }
+                ]
+            }
+        ]
     }
-]
+];
+
 const experiences = [
     {
         id: "uber",
-        title: "Application de Gestion Type UBER",
-        date: "2023 - 2024 (SAE S3/S4)",
-        contexte: "Projet académique majeur réalisé en équipe de 4 sur deux semestres. Simulation complète d'un système de VTC, livraison de repas et location de vélos.",
-        description: "Conception et développement d'une solution complète comprenant une API REST robuste et une interface client moderne.",
+        title: "Application UBER (S3/S4)",
+        date: "2023 - 2024",
+        contexte: "Projet majeur en équipe de 4. Simulation complète VTC et livraison.",
+        description: "Développement d'une API .NET et d'un client Vue.js avec architecture complexe.",
         missions: [
-            "Conception de l'architecture API REST en .NET 8 (Code First)",
-            "Mise en place de la sécurité (JWT, Hashage)",
-            "Développement du frontend client avec Vue.js et Pinia",
-            "Mise en place d'une CI/CD sur Azure DevOps",
-            "Gestion de base de données PostgreSQL complexe (40+ tables)"
+            "Conception API REST (.NET 8) et BDD PostgreSQL",
+            "Mise en place sécurité (JWT) et CI/CD Azure",
+            "Développement Frontend Vue.js avec Pinia",
+            "Gestion de projet Agile et Code Review"
         ],
-        technologies: ["C#", ".NET Core", "Vue.js", "PostgreSQL", "Entity Framework", "Azure", "Git"],
+        technologies: ["C#", ".NET", "Vue.js", "PostgreSQL", "Azure", "Git"],
         competences: ["Réaliser", "Optimiser", "Collaborer"]
     },
     {
         id: "sdis",
         title: "Gestion Matériel SDIS 69",
-        date: "2023 (SAE S2.04)",
-        contexte: "Projet de groupe pour le Service Départemental d'Incendie et de Secours. Besoin de gérer les commandes de matériels, véhicules et tenues.",
-        description: "Application lourde (Desktop) permettant aux casernes de gérer leurs stocks et leurs commandes auprès du siège.",
+        date: "2023",
+        contexte: "Application lourde pour la gestion des stocks des pompiers.",
+        description: "Création d'une application WPF pour gérer commandes et affectations.",
         missions: [
-            "Analyse des besoins et création du MCD/MLD",
-            "Développement de l'interface WPF (XAML)",
-            "Création de la logique métier en C# (CRUD complet)",
-            "Génération de statistiques sur les commandes"
+            "Analyse des besoins (MCD/MLD)",
+            "Développement interface WPF/XAML",
+            "Implémentation logique métier C#"
         ],
-        technologies: ["C#", "WPF", "SQL Server", "Merise", "Visual Studio"],
-        competences: ["Réaliser", "Administrer BD"]
+        technologies: ["C#", "WPF", "SQL Server", "Merise"],
+        competences: ["Réaliser", "Administrer"]
     },
     {
         id: "goldrush",
-        title: "Jeu Vidéo Gold Rush",
-        date: "2022 (SAE S1.01)",
-        contexte: "Premier projet de développement en binôme. Création d'un jeu de plateforme complet.",
-        description: "Développement d'un jeu style 'Mario' avec gestion de la physique, des ennemis et du score.",
+        title: "Jeu Gold Rush",
+        date: "2022",
+        contexte: "Premier projet de développement en binôme.",
+        description: "Jeu de plateforme type Mario développé en C#.",
         missions: [
-            "Implémentation de la boucle de jeu et de la physique",
-            "Gestion des collisions et des animations",
-            "Création des niveaux et du système de sauvegarde",
+            "Moteur physique et collisions",
+            "Gestion des niveaux et scores",
             "Travail en Pair Programming"
         ],
-        technologies: ["C#", "WPF", "Algo", "Git"],
-        competences: ["Réaliser", "Algorithmique"]
+        technologies: ["C#", "WPF", "Algorithmique"],
+        competences: ["Réaliser", "Collaborer"]
     },
     {
-        id: "install-pi",
-        title: "Serveur Web sur Raspberry Pi",
+        id: "pi",
+        title: "Serveur Raspberry Pi",
         date: "2023",
-        contexte: "Guide d'installation et configuration système.",
-        description: "Mise en place d'un environnement serveur complet sous Linux.",
+        contexte: "Mise en place d'infrastructure système.",
+        description: "Installation et configuration d'un serveur Web Linux.",
         missions: [
-            "Installation de l'OS (Raspbian Lite)",
-            "Configuration réseau (SSH, IP Statique)",
-            "Installation de la stack LAMP (Linux, Apache, MySQL, PHP)",
-            "Rédaction d'un guide technique en anglais"
+            "Installation OS et configuration SSH",
+            "Mise en place stack LAMP (Linux Apache MySQL PHP)",
+            "Rédaction documentation technique anglais"
         ],
         technologies: ["Linux", "Bash", "Apache", "SSH"],
         competences: ["Administrer", "Collaborer"]
