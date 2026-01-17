@@ -25,6 +25,7 @@
 .hero-content p { 
     font-size: 1.1rem; 
     color: #cbd5e1; 
+    text-align: justify;
     line-height: 1.8; 
     margin-bottom: 2rem; 
 }

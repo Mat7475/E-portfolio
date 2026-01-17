@@ -32,13 +32,52 @@ function generateProjects() {
         const card = document.createElement('div');
         card.className = 'project-card';
         
+        // --- 1. Génération de la liste des missions ---
         const missionsList = exp.missions 
             ? `<ul style="margin: 0.5rem 0 1rem 1.2rem; color: #cbd5e1;">${exp.missions.map(m => `<li style="margin-bottom:0.3rem;">${m}</li>`).join('')}</ul>` 
             : '';
 
+        // --- 2. Génération des Images ---
+        // On affiche les images si le tableau n'est pas vide
+        const imagesHtml = (exp.images && exp.images.length > 0)
+            ? `<div style="margin: 1rem 0; display: flex; gap: 10px; flex-wrap: wrap;">
+                 ${exp.images.map(img => `<img src="${img}" alt="Image ${exp.title}" style="max-width: 100%; height: auto; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1);">`).join('')}
+               </div>`
+            : '';
+
+        // --- 3. Génération des Boutons (Documents et Liens) ---
+        let actionsHtml = '';
+        const hasDocs = exp.documents && exp.documents.length > 0;
+        const hasLink = exp.liens && exp.liens.length > 0;
+
+        if (hasDocs || hasLink) {
+            actionsHtml += `<div style="margin: 1rem 0; display: flex; gap: 10px; flex-wrap: wrap;">`;
+            
+            // Bouton(s) Document(s)
+            if (hasDocs) {
+                actionsHtml += exp.documents.map(doc => 
+                    `<a href="${doc.url}" target="_blank" class="btn-action" style="display: inline-flex; align-items: center; padding: 8px 16px; background-color: rgba(255,255,255,0.1); color: white; text-decoration: none; border-radius: 4px; font-size: 0.9rem; border: 1px solid rgba(255,255,255,0.2); transition: background 0.3s;">
+                        ${doc.titre}
+                    </a>`
+                ).join('');
+            }
+
+            // Bouton Lien
+            if (hasLink) {
+                // On s'assure que le lien commence par http (optionnel, mais conseillé)
+                let linkHref = exp.liens.startsWith('http') ? exp.liens : `https://${exp.liens}`;
+                actionsHtml += `
+                    <a href="${linkHref}" target="_blank" class="btn-action" style="display: inline-flex; align-items: center; padding: 8px 16px; background-color: var(--primary, #3b82f6); color: white; text-decoration: none; border-radius: 4px; font-size: 0.9rem; font-weight: bold;">
+                        🔗 Voir le projet
+                    </a>`;
+            }
+            actionsHtml += `</div>`;
+        }
+
+        // --- 4. Assemblage final de la carte ---
         card.innerHTML = `
             <div class="project-header">
-                <h3>${exp.title}</h3>
+                <h3 id="${exp.title}">${exp.title}</h3>
                 <span style="font-size: 0.9rem; color: #94a3b8; display:block; margin-top:0.3rem;">${exp.date}</span>
             </div>
             <div class="project-body">
@@ -52,13 +91,17 @@ function generateProjects() {
                 <strong style="color: var(--primary);">Missions :</strong>
                 ${missionsList}
 
+                ${imagesHtml}
+
+                ${actionsHtml}
+
                 <div style="margin-top: auto; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
                     <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.8rem;">
                         ${exp.technologies.map(t => `<span class="tag" style="background:rgba(255,255,255,0.1); padding:3px 8px; border-radius:4px; font-size:0.85rem;">${t}</span>`).join('')}
                     </div>
                     <div>
                         <small style="color: #94a3b8;">Compétences :</small>
-                        ${exp.competences.map(c => `<span style="color: var(--accent); margin-left: 6px; font-weight:bold;">#${c}</span>`).join('')}
+                        ${exp.competences.map(c => `<a href="#${c}"><span style="color: var(--accent); margin-left: 6px; font-weight:bold;">- ${c}</span></a>`).join('')}
                     </div>
                 </div>
             </div>
@@ -91,13 +134,12 @@ function generateCompetences() {
                     </div>
                 `).join('');
 
-                // 2. Liste des Preuves (Cartes détaillées)
                 let preuvesHTML = '';
                 if(niv.preuves && niv.preuves.length > 0) {
                     preuvesHTML = `<div class="preuves-container" style="margin-top: 1rem; display:grid; gap:1rem;">` + 
                     niv.preuves.map(preuve => `
                         <div class="preuve-card" style="background: rgba(15, 23, 42, 0.6); padding: 1rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
-                            <h5 style="color: #fff; margin-bottom: 0.5rem; font-size: 1rem;">📂 ${preuve.titre}</h5>
+                             <a href="#${preuve.titre}"><h5 style="color: #fff; margin-bottom: 0.5rem; font-size: 1rem;" >📂 ${preuve.titre}</h5></a>
                             <p style="color: #94a3b8; font-size: 0.9rem; font-style: italic; margin-bottom: 0.8rem;">${preuve.contexte}</p>
                             
                             <ul style="padding-left: 1.2rem; color: #cbd5e1; font-size: 0.9rem; margin-bottom: 0.8rem;">
@@ -131,7 +173,7 @@ function generateCompetences() {
 
         card.innerHTML = `
             <div class="competence-header">
-                <h2 style="color: ${comp.couleur}; margin: 0 0 0.5rem 0;">${comp.titre}</h2>
+                <h2 id="${comp.nav}" style="color: ${comp.couleur}; margin: 0 0 0.5rem 0;">${comp.titre}</h2>
                 <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.5;">${comp.description}</p>
             </div>
             <div class="competence-body">

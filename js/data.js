@@ -2,6 +2,7 @@ const competences = [
     {
         id: "c1",
         titre: "C1 - Réaliser",
+        nav: "Réaliser",
         description: "Développer des applications informatiques complexes (conception, codage, tests, intégration).",
         couleur: "#3498db", // Bleu
         niveaux: [
@@ -15,7 +16,7 @@ const competences = [
                 ],
                 preuves: [
                     {
-                        titre: "Jeu Gold Rush (SAE S1.01)",
+                        titre: "Jeu Gold Rush",
                         contexte: "Développement d'un jeu de plateforme en C# et WPF en binôme.",
                         realisation: [
                             "Conception du diagramme de classes",
@@ -38,7 +39,7 @@ const competences = [
                 ],
                 preuves: [
                     {
-                        titre: "Application UBER (SAE S3/S4)",
+                        titre: "Application UBER",
                         contexte: "Développement complet d'une solution VTC/Livraison en équipe de 4.",
                         realisation: [
                             "Architecture N-Tiers avec API REST .NET 8",
@@ -48,17 +49,6 @@ const competences = [
                         ],
                         technos: [".NET 8", "Vue.js", "Azure", "Cypress"],
                         images: ["images/uber/architecture.png"]
-                    },
-                    {
-                        titre: "Gestion SDIS 69 (SAE S2.04)",
-                        contexte: "Application WPF pour la gestion du matériel des pompiers.",
-                        realisation: [
-                            "Respect du cahier des charges fonctionnel",
-                            "Interface utilisateur adaptée aux besoins des pompiers",
-                            "Validation des formulaires de commande"
-                        ],
-                        technos: ["WPF", "C#", "SQL Server"],
-                        images: ["images/sdis/interface.png"]
                     }
                 ]
             },
@@ -72,14 +62,16 @@ const competences = [
                 ],
                 preuves: [
                     {
-                        titre: "Évolution Architecture UBER",
-                        contexte: "Passage à une architecture micro-services et déploiement cloud.",
+                        titre: "Application de revente de voitures AutoPulse avec intégration d'IA et d'API externes",
+                        contexte: "Dévellopement d'un site de revente a l'aide de C# eet blazor boosté avec nos propre IA intégré.",
                         realisation: [
-                            "Refactoring du backend pour isoler les services",
-                            "Déploiement conteneurisé sur Azure (Docker)",
-                            "Ajout du module de location de vélos"
+                            "Developpement d'une API REST avec .NET et C# utilisant le pattern repository",
+                            "Intégration de modèles d'IA pour l'évaluation des véhicules",
+                            "Utilisation d'API externes pour la validation des adresses et l'authentification Google",
+                            "Développement du frontend avec Blazor et le pattern MVVM",
+                            "Déploiement conteneurisé sur Azure (Docker)"
                         ],
-                        technos: ["Docker", "Azure Cloud", "Microservices"],
+                        technos: ["Docker", "Azure Cloud", "Microservices","IA", "C#","Blazor", ".NET", "API Externes"],
                         images: []
                     }
                 ]
@@ -89,6 +81,7 @@ const competences = [
     {
         id: "c2",
         titre: "C2 - Optimiser",
+        nav: "Optimiser",
         description: "Proposer des applications optimisées (temps d'exécution, précision, consommation de ressources).",
         couleur: "#e74c3c", // Rouge
         niveaux: [
@@ -101,7 +94,7 @@ const competences = [
                 ],
                 preuves: [
                     {
-                        titre: "Algorithmes Gold Rush",
+                        titre: "Jeu Gold Rush",
                         contexte: "Optimisation des mécaniques de jeu.",
                         realisation: [
                             "Algorithme de gravité et de saut",
@@ -123,14 +116,16 @@ const competences = [
                 ],
                 preuves: [
                     {
-                        titre: "Optimisation UBER",
+                        titre: "Application UBER",
                         contexte: "Performance et sécurité de l'application.",
                         realisation: [
                             "Utilisation de DTOs pour réduire la charge réseau",
                             "Sécurisation des mots de passe (Bcrypt) et API (JWT)",
-                            "Comparatif Green IT : Azure vs Serveur dédié"
+                            "Comparatif Green IT : Azure vs Serveur dédié",
+                            "Tests unitaires et d'intégration avec moq pour garantir la robustesse",
+                            "Afin d'optimiser les requetes HTTP entre le client et l'API, nous avons utilisé des DTOs (Data Transfer Objects) pour ne transférer que les données nécessaires, réduisant ainsi la charge réseau et améliorant les performances.",
                         ],
-                        technos: ["Bcrypt", "JWT", "LINQ"],
+                        technos: ["Bcrypt", "JWT", "DTOs", "Azure", "Moq"],
                         images: []
                     }
                 ]
@@ -145,14 +140,17 @@ const competences = [
                 ],
                 preuves: [
                     {
-                        titre: "Profiling Avancé",
-                        contexte: "Analyse des performances de l'API.",
+                        titre: "Application de revente de voitures AutoPulse avec intégration d'IA et d'API externes",
+                        contexte: "Dévellopement d'un site de revente a l'aide de C# eet blazor boosté avec nos propre IA intégré.",
                         realisation: [
                             "Utilisation des outils de diagnostic Visual Studio",
                             "Programmation asynchrone (Async/Await) pour la scalabilité",
+                            "Separation des couches avec le pattern repository et le MVVM",
+                            "Tests unitaires et d'intégration pour garantir la robustesse",
+                            "Afin d'optimiser les requetes HTTP entre le client et l'API, nous avons utilisé des DTOs (Data Transfer Objects) pour ne transférer que les données nécessaires, réduisant ainsi la charge réseau et améliorant les performances.",
                             "Tests de charge sur l'API"
                         ],
-                        technos: ["Visual Studio Profiler", "Async/Await"],
+                        technos: ["Visual Studio Profiler", "Async/Await", "DTOs", "Moq"],
                         images: []
                     }
                 ]
@@ -162,6 +160,7 @@ const competences = [
     {
         id: "c3",
         titre: "C3 - Administrer",
+        nav: "Administrer",
         description: "Installer, configurer et maintenir des systèmes et réseaux.",
         couleur: "#2ecc71", // Vert
         niveaux: [
@@ -212,6 +211,7 @@ const competences = [
     {
         id: "c4",
         titre: "C4 - Gérer des données",
+        nav: "Gérer des données",
         description: "Concevoir, gérer, administrer et exploiter des bases de données.",
         couleur: "#9b59b6", // Violet
         niveaux: [
@@ -245,14 +245,16 @@ const competences = [
                 ],
                 preuves: [
                     {
-                        titre: "BDD Uber & SDIS",
+                        titre: "Application UBER",
                         contexte: "Gestion de données complexes pour applications métiers.",
                         realisation: [
                             "Normalisation des données (46 tables pour Uber)",
                             "Mise en place de contraintes d'intégrité et sécurité",
-                            "Utilisation d'ORM (Entity Framework) pour l'interaction"
+                            "Utilisation d'ORM (Entity Framework) pour l'interaction",
+                            "Création de vues pour les rapports administratifs et analyses",
+                            "Creation de procédures stockées pour automatiser les tâches récurrentes(création de panier vide au moment de la création d'un utilisateur, mise a jour du statut d'une course...)"
                         ],
-                        technos: ["Entity Framework", "PostgreSQL", "SQL Server"],
+                        technos: ["Entity Framework", "PostgreSQL", "ORM", "SQL"],
                         images: []
                     }
                 ]
@@ -262,6 +264,7 @@ const competences = [
     {
         id: "c5",
         titre: "C5 - Conduire un projet",
+        nav: "Conduire un projet",
         description: "Satisfaire les besoins des utilisateurs et piloter un projet informatique.",
         couleur: "#f39c12", // Orange
         niveaux: [
@@ -274,10 +277,12 @@ const competences = [
                 ],
                 preuves: [
                     {
-                        titre: "Analyse SDIS 69",
+                        titre: "SDIS 69",
                         contexte: "Étude préalable pour le logiciel des pompiers.",
                         realisation: [
                             "Analyse des processus d'achat",
+                            "Analyse des besoins utilisateurs, du métier et fonctionnels",
+                            "Realisation de diagrammes UML et de maquettes fonctionnelles",
                             "Rédaction du Cahier des charges fonctionnel"
                         ],
                         technos: ["UML", "Word"],
@@ -294,10 +299,11 @@ const competences = [
                 ],
                 preuves: [
                     {
-                        titre: "Gestion de projet Agile UBER",
-                        contexte: "Pilotage d'un projet de 6 mois en équipe.",
+                        titre: "Application UBER",
+                        contexte: "Pilotage d'un projet de 4 mois en équipe.",
                         realisation: [
                             "Rédaction du Backlog et des User Stories",
+                            "Planification des sprints et rétrospectives en tant que ScrumMaster",
                             "Suivi des Sprints via Azure DevOps",
                             "Animation des cérémonies Scrum"
                         ],
@@ -311,6 +317,7 @@ const competences = [
     {
         id: "c6",
         titre: "C6 - Collaborer",
+        nav: "Collaborer",
         description: "Travailler efficacement au sein d'une équipe informatique.",
         couleur: "#1abc9c", // Turquoise
         niveaux: [
@@ -323,7 +330,7 @@ const competences = [
                 ],
                 preuves: [
                     {
-                        titre: "Binôme Gold Rush",
+                        titre: "Jeu Gold Rush",
                         contexte: "Premier projet de développement en duo.",
                         realisation: [
                             "Répartition des tâches (Design / Code)",
@@ -344,10 +351,10 @@ const competences = [
                 ],
                 preuves: [
                     {
-                        titre: "Travail d'équipe UBER",
-                        contexte: "Équipe de 4 développeurs avec rôles définis.",
+                        titre: "Application UBER",
+                        contexte: "Équipe de 5 développeurs avec rôles définis.",
                         realisation: [
-                            "Définition des rôles : Lead Tech, Frontend, Backend",
+                            "Définition des rôles : ScrumMaster, Frontend, Backend",
                             "Mise en place du workflow Git (Gitflow)",
                             "Revues de code (Merge Requests) systématiques"
                         ],
@@ -367,12 +374,14 @@ const competences = [
                 ],
                 preuves: [
                     {
-                        titre: "Lead Developer UBER",
+                        titre: "Application UBER",
                         contexte: "Coordination technique de l'équipe.",
                         realisation: [
                             "Choix de la stack technique et formation des pairs",
                             "Gestion des conflits techniques",
-                            "Planification des livraisons"
+                            "Scrummaster et facilitation des réunions",
+                            "Assurance qualité et respect des normes de codage",
+                            "Utlisation de patterns de gestion de projet agile",
                         ],
                         technos: ["Leadership", "Mentoring"],
                         images: []
@@ -386,59 +395,138 @@ const competences = [
 const experiences = [
     {
         id: "uber",
-        title: "Application UBER (S3/S4)",
+        title: "Application UBER",
         date: "2023 - 2024",
         contexte: "Projet majeur en équipe de 4. Simulation complète VTC et livraison.",
-        description: "Développement d'une API .NET et d'un client Vue.js avec architecture complexe.",
+        description: "Développement d'une API .NET et d'un client en Laravel avec architecture complexe.",
         missions: [
-            "Conception API REST (.NET 8) et BDD PostgreSQL",
-            "Mise en place sécurité (JWT) et CI/CD Azure",
-            "Développement Frontend Vue.js avec Pinia",
-            "Gestion de projet Agile et Code Review"
+            "Conception API REST (.NET 8) et BDD PostgreSQL a l'aide du code first ave plus de 46 tables en base de données.",
+            "Développement de fonctionnalités avancées : géolocalisation, gestion des courses, paiements sécurisés (Stripe).",
+            "Creation de procédures stockées pour automatiser les tâches récurrentes(création de panier vide au moment de la création d'un utilisateur, mise a jour du statut d'une course...)",
+            "Script d'insertion de données pour simuler l'activité avec notamment des fonctions intégrée PostgreSQL pour définir les horaires d'activité des restaurants.",
+            "Mise en place sécurité (JWT) pour sécuriser la connexion utilisateur et CI/CD Azure afin de déployer automatiquement l'API sur Azure a chaque mise a jour du code.",
+            "Développement Frontend Laravel pour le client avec une interface utilisateur ergonomique et responsive. Afin aussi de faciliter la navigation et l'utilisation de l'application sur différents appareils, et de bien séparer le code métier et la présentation.",
+            "Gestion de projet Agile et Code Review. Organisation du travail en sprints avec des réunions hebdomadaire pour suivre l'avancement. Utilisation de Git pour le contrôle de version et les revues de code afin d'assurer la qualité du code et le partage des connaissances au sein de l'équipe.",
+            "Afin d'optimiser les requetes HTTP entre le client et l'API, nous avons utilisé des DTOs (Data Transfer Objects) pour ne transférer que les données nécessaires, réduisant ainsi la charge réseau et améliorant les performances.",
+            "Tests unitaires et d'intégration a l'aide de moq pour garantir la robustesse de l'application.",
+            "J'ai réalise le projet en tant que Scrummaster coordonnant les efforts de l'équipe, assurant la qualité technique du produit final, la conformité aux exigences du client et la bonne communication entre les membres de l'équipe."
         ],
-        technologies: ["C#", ".NET", "Vue.js", "PostgreSQL", "Azure", "Git"],
+        images: ["asset/img/uber.png", "asset/img/uber2.png"],
+        documents: [],
+        technologies: ["C#", ".NET", "Laravel", "PostgreSQL", "Azure", "Git"],
+        competences: ["Réaliser", "Optimiser", "Collaborer","Conduire un projet", "Gérer des données"]
+    },
+        {
+        id: "autopulse",
+        title: "Application de revente de voitures AutoPulse avec intégration d'IA et d'API externes",
+        date: "2025-2026",
+        contexte: "Réalisation d'une application web pour la revente de voitures d'occasion, intégrant des fonctionnalités d'IA.",
+        description: "Développement d'une API .NET a l'aide C# et du pattern repository. Avec un Front end en Blazor et le pattern MVVM.",
+        missions: [
+            "Conception et développement de l'API REST avec .NET et C#, avec le model repository. C'est a dire une séparation entre la logique métier et l'accès a la base de données.",
+            "Intégration de modèles d'IA crée nous meme. Avec un pour detection de prix par rapport aux caractéristiques du véhicule, une autre pour l'analyse d'images des véhicules, et une derniere pour analyser la description des annonces et reajuster le prix en conséquence.",
+            "Utilisation d'API externes pour la récupération de données sur les adesses et pour verifier quelles existent dans la réalité.",
+            "Utilisation aussi de Google Auth pour se connecter à l'aide de Google.",
+            "Utilisation de Immat France pour récupérer les informations des véhicules a partir de leur plaque d'immatriculation et facilliter la création des annonces.",
+            "Gestion de la base de données avec Entity Framework et Postgres SQL.",
+            "Afin d'optimiser les requetes HTTP entre le client et l'API, nous avons utilisé des DTOs (Data Transfer Objects) pour ne transférer que les données nécessaires, réduisant ainsi la charge réseau et améliorant les performances.",
+            "Plus de 1250 tests unitaires et d'intégration a l'aide de moq pour garantir la robustesse de l'application.",
+            "Développement du frontend avec Blazor et le pattern MVVM pour une meilleure organisation du code et une séparation claire entre la logique de présentation et la logique métier."
+        ],
+        images: ["asset/img/autopulse.png", "asset/img/autopulse1.png"],
+        documents: [{titre: "Github du projet ", url: "asset/doc/Documentation_AutoPulse.pdf"},],
+        liens: "https://blazor-autopulse-c2ehbpd0hzh9e8he.francecentral-01.azurewebsites.net/",
+        technologies: ["C#", "Blazor", "Python", "SQL", "Entity Framework", "IA", "API Externes"],
         competences: ["Réaliser", "Optimiser", "Collaborer"]
     },
     {
-        id: "sdis",
-        title: "Gestion Matériel SDIS 69",
+        id: "bdd foxconn",
+        title: "Base de données Foxconn",
         date: "2023",
-        contexte: "Application lourde pour la gestion des stocks des pompiers.",
-        description: "Création d'une application WPF pour gérer commandes et affectations.",
+        contexte: "Optimisation et restructuration d'une base de données existante pour une meilleure performance et intégrité des données.",
+        description: "Analyse et refonte de la base de données relationnelle d'une entreprise industrielle en groupe de 3.",
         missions: [
-            "Analyse des besoins (MCD/MLD)",
-            "Développement interface WPF/XAML",
-            "Implémentation logique métier C#"
+            "Analyse de la structure actuelle de la base de données et identification des points faibles (redondances, anomalies, performances).",
+            "Conception d'un nouveau modèle de données en utilisant les techniques de modélisation (MCD, MLD) pour améliorer l'organisation et la cohérence des données.",
+            "Implémentation des modifications dans le système de gestion de base de données (SGBD) en utilisant SQL pour créer les nouvelles tables, relations et contraintes.",
+            "Redaction de scripts SQL d'insertion de données dans la nouvelle base de données.",
+            "Redaction de requetes SQL complexes pour extraire des informations pertinentes de la base de données.",
+            "Rédaction d'une documentation technique détaillant les changements apportés et les raisons derrière ces choix en anglais."
         ],
-        technologies: ["C#", "WPF", "SQL Server", "Merise"],
-        competences: ["Réaliser", "Administrer"]
+        images: [],
+        documents: [{titre: "Télécharger le rapport MCD/MLD", url: "asset/doc/Rapportbd.pdf"},
+            {titre: "Télécharger le rapport d'insertion", url: "asset/doc/InsertBD.pdf"}
+        ],
+        technologies: ["Linux", "Bash", "Apache", "SSH", "VirtualBox"],
+        competences: ["Administrer", "Collaborer"]
     },
     {
         id: "goldrush",
         title: "Jeu Gold Rush",
         date: "2022",
         contexte: "Premier projet de développement en binôme.",
-        description: "Jeu de plateforme type Mario développé en C#.",
+        description: "Jeu de plateforme type Mario développé en C# avec une interface graphique WPF.",
         missions: [
-            "Moteur physique et collisions",
-            "Gestion des niveaux et scores",
-            "Travail en Pair Programming"
+            "Le principe du jeu est de contrôler un personnage qui doit collecter des pièces d'or tout en évitant des obstacles et ennemis tous ca avec une limite de temps. Le joueur peut sauter, courir et interagir avec l'environnement pour atteindre son objectif.",
+            "Réalisation du diagramme de classes pour structurer le code et définir les interactions entre les objets du jeu.",
+            "Gestion des niveaux et scores a l'aide de classes et méthodes pour mieux organiser le code.",
+            "Travail en Pair Programming pour favoriser la collaboration et le partage des connaissances. Eviter les conflits de code en utilisant Git pour le contrôle de version."
         ],
+        images: ["asset/img/GoldRush.png"],
+        documents: [{titre: "Télécharger Le rapport", url: "asset/doc/jeu_piece.pdf"},],
         technologies: ["C#", "WPF", "Algorithmique"],
-        competences: ["Réaliser", "Collaborer"]
+        competences: ["Réaliser", "Optimiser","Collaborer"]
+    },
+    {
+        id: "sdis69",
+        title: "SDIS 69",
+        date: "2023",
+        contexte: "Crée une nouvelle application pour faciliter la gestion de matériel et de commande du SDIS 69.",
+        description: "Application de gestion du matériel des pompiers développée en C# avec WPF.",
+        missions: [
+            "Analyse des processus d'achat et de gestion du matériel pour identifier les besoins spécifiques du SDIS 69.",
+            "Rédaction du cahier des charges fonctionnel pour définir les fonctionnalités et exigences de l'application contenant la nouvelle base de données, des maquettes d'écrans et des diagrammes UML.",
+            "Développement de l'application en C# avec WPF, en mettant l'accent sur une interface utilisateur intuitive et ergonomique.",
+            "Implémentation de fonctionnalités clés telles que la gestion des stocks, le suivi des commandes et la génération de rapports.",
+            "Tests et validation de l'application pour garantir sa fiabilité et son efficacité dans un environnement opérationnel."
+        ],
+        images: ["asset/img/SDIS.png"],
+        documents: [{titre: "Télécharger le cahier des charges", url: "asset/doc/Sdis.pdf"},],
+        technologies: ["C#", "WPF", "Algorithmique"],
+        competences: ["Réaliser", "Collaborer", "Conduire un projet"]
     },
     {
         id: "pi",
-        title: "Serveur Raspberry Pi",
+        title: "Serveur Web Raspberry Pi",
         date: "2023",
         contexte: "Mise en place d'infrastructure système sous des conditions spécifiques",
-        description: "Installation et configuration d'un serveur Web Linux.",
+        description: "Installation et configuration d'un serveur Web Linux en groupe de 3",
         missions: [
-            "Installation OS et configuration SSH",
-            "Mise en place stack LAMP (Linux Apache MySQL PHP)",
-            "Rédaction documentation technique anglais"
+            "Installation OS et configuration SSH afin de pouvoir administrer le serveur a distance.",
+            "Mise en place stack LAMP (Linux Apache MySQL PHP) afin de poster un site web dynamique.",
+            "Sécurisation du serveur avec pare-feu UFW et bonnes pratiques, afin d'éviter les intrusions et les requetes malveillantes et excessives.",
+            "Rédaction documentation technique de l'installation en anglais"
         ],
+        images: [],
+        documents: [{titre: "Télécharger le rapport", url: "asset/doc/Raspberry.pdf"},],
         technologies: ["Linux", "Bash", "Apache", "SSH"],
         competences: ["Administrer", "Collaborer"]
-    }
+    },
+    {
+        id: "vmubuntu",
+        title: "Installation VM Ubuntu",
+        date: "2023",
+        contexte: "Mise en place d'un environnement de développement Linux suivant des conditions spécifiques",
+        description: "Installation et configuration du système d'exploitation Ubuntu sur une machine virtuelle en binôme pour herber un environnement de développement.",
+        missions: [
+            "Installation d'Ubuntu sur VirtualBox en configurant les partitions et les utilisateurs selon les exigences données.",
+            "Configuration réseau de la VM pour assurer une connectivité optimale avec l'hôte et Internet.",
+            "Installation des outils de développement nécessaires (éditeurs de code, compilateurs, gestionnaires de paquets).",
+            "Rédaction d'une documentation technique détaillant les étapes d'installation et de configuration en anglais."
+        ],
+        images: [],
+        documents: [{titre: "Télécharger le rapport", url: "asset/doc/VM.pdf"},],
+        technologies: ["Linux", "Bash", "Apache", "SSH", "VirtualBox"],
+        competences: ["Administrer", "Collaborer"]
+    },
 ];
