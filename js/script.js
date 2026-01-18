@@ -2,7 +2,7 @@
 function createParticles() {
     const container = document.getElementById('particles-container');
     if (!container) return;
-    for (let i = 0; i < 40; i++) {
+    for (let i = 0; i < 400; i++) {
         const particle = document.createElement('div');
         particle.className = 'particle';
         particle.style.left = Math.random() * 100 + '%';
@@ -17,8 +17,8 @@ function createParticles() {
 // --- INITIALISATION ---
 document.addEventListener('DOMContentLoaded', () => {
     createParticles();
-    generateProjects();    // Pour experiences.html
-    generateCompetences(); // Pour competences.html
+    generateProjects();
+    generateCompetences();
 });
 
 // --- PAGE EXPÉRIENCES ---
@@ -32,20 +32,16 @@ function generateProjects() {
         const card = document.createElement('div');
         card.className = 'project-card';
         
-        // --- 1. Génération de la liste des missions ---
         const missionsList = exp.missions 
             ? `<ul style="margin: 0.5rem 0 1rem 1.2rem; color: #cbd5e1;">${exp.missions.map(m => `<li style="margin-bottom:0.3rem;">${m}</li>`).join('')}</ul>` 
             : '';
 
-        // --- 2. Génération des Images ---
-        // On affiche les images si le tableau n'est pas vide
         const imagesHtml = (exp.images && exp.images.length > 0)
             ? `<div style="margin: 1rem 0; display: flex; gap: 10px; flex-wrap: wrap;">
                  ${exp.images.map(img => `<img src="${img}" alt="Image ${exp.title}" style="max-width: 100%; height: auto; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1);">`).join('')}
                </div>`
             : '';
 
-        // --- 3. Génération des Boutons (Documents et Liens) ---
         let actionsHtml = '';
         const hasDocs = exp.documents && exp.documents.length > 0;
         const hasLink = exp.liens && exp.liens.length > 0;
@@ -53,7 +49,6 @@ function generateProjects() {
         if (hasDocs || hasLink) {
             actionsHtml += `<div style="margin: 1rem 0; display: flex; gap: 10px; flex-wrap: wrap;">`;
             
-            // Bouton(s) Document(s)
             if (hasDocs) {
                 actionsHtml += exp.documents.map(doc => 
                     `<a href="${doc.url}" target="_blank" class="btn-action" style="display: inline-flex; align-items: center; padding: 8px 16px; background-color: rgba(255,255,255,0.1); color: white; text-decoration: none; border-radius: 4px; font-size: 0.9rem; border: 1px solid rgba(255,255,255,0.2); transition: background 0.3s;">
@@ -62,9 +57,7 @@ function generateProjects() {
                 ).join('');
             }
 
-            // Bouton Lien
             if (hasLink) {
-                // On s'assure que le lien commence par http (optionnel, mais conseillé)
                 let linkHref = exp.liens.startsWith('http') ? exp.liens : `https://${exp.liens}`;
                 actionsHtml += `
                     <a href="${linkHref}" target="_blank" class="btn-action" style="display: inline-flex; align-items: center; padding: 8px 16px; background-color: var(--primary, #3b82f6); color: white; text-decoration: none; border-radius: 4px; font-size: 0.9rem; font-weight: bold;">
@@ -74,11 +67,13 @@ function generateProjects() {
             actionsHtml += `</div>`;
         }
 
-        // --- 4. Assemblage final de la carte ---
         card.innerHTML = `
             <div class="project-header">
-                <h3 id="${exp.title}">${exp.title}</h3>
-                <span style="font-size: 0.9rem; color: #94a3b8; display:block; margin-top:0.3rem;">${exp.date}</span>
+                <div class="project-header-content">
+                    <h3 id="${exp.title}">${exp.title}</h3>
+                    <span style="font-size: 0.9rem; color: #94a3b8; display:block; margin-top:0.3rem;">${exp.date}</span>
+                </div>
+                <div class="project-toggle-icon">▼</div>
             </div>
             <div class="project-body">
                 <div style="margin-bottom: 1rem;">
@@ -106,11 +101,19 @@ function generateProjects() {
                 </div>
             </div>
         `;
+        
+        // Ajouter l'événement de clic sur le header pour déplier/replier
+        const header = card.querySelector('.project-header');
+        header.addEventListener('click', () => {
+            card.classList.toggle('expanded');
+        });
+        
         grid.appendChild(card);
     });
 }
 
-// --- PAGE COMPÉTENCES (MISE À JOUR) ---
+
+// --- PAGE COMPÉTENCES (AVEC SYSTÈME DE DÉPLIAGE) ---
 function generateCompetences() {
     const grid = document.getElementById('competencesGrid');
     if(!grid || typeof competences === 'undefined') return;
@@ -122,12 +125,9 @@ function generateCompetences() {
         card.className = 'competence-card';
         card.style.borderLeft = `5px solid ${comp.couleur || '#6366f1'}`;
 
-        // Construction du HTML pour les niveaux
         let niveauxHTML = '';
         if (comp.niveaux && comp.niveaux.length > 0) {
             niveauxHTML = comp.niveaux.map(niv => {
-                
-                // 1. Liste des AC
                 const acHTML = niv.ac.map(ac => `
                     <div class="ac-item" style="margin-bottom: 0.5rem; color: #e2e8f0;">
                         <span style="color: ${comp.couleur}; font-weight:bold; margin-right:5px;">${ac.id} :</span> ${ac.text}
@@ -148,6 +148,9 @@ function generateCompetences() {
 
                             <div class="preuve-techs" style="display:flex; flex-wrap:wrap; gap:0.4rem;">
                                 ${preuve.technos.map(t => `<span style="background: ${comp.couleur}33; color: ${comp.couleur}; padding: 2px 8px; border-radius: 12px; font-size: 0.75rem;">${t}</span>`).join('')}
+                            </div>
+                            <div class="preuve-techs" style="display:flex; flex-wrap:wrap; gap:0.4rem;">
+                                ${preuve.ac.map(t => `<span style="background: ${comp.couleur}33; color: ${comp.couleur};margin-top:0.5rem; padding: 2px 8px; border-radius: 12px; font-size: 0.75rem;">${t}</span>`).join('')}
                             </div>
                         </div>
                     `).join('') + `</div>`;
@@ -173,13 +176,23 @@ function generateCompetences() {
 
         card.innerHTML = `
             <div class="competence-header">
-                <h2 id="${comp.nav}" style="color: ${comp.couleur}; margin: 0 0 0.5rem 0;">${comp.titre}</h2>
-                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.5;">${comp.description}</p>
+                <div class="competence-header-content">
+                    <h2 id="${comp.nav}" style="color: ${comp.couleur}; margin: 0 0 0.5rem 0;">${comp.titre}</h2>
+                    <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.5;">${comp.description}</p>
+                </div>
+                <div class="toggle-icon">▼</div>
             </div>
             <div class="competence-body">
                 ${niveauxHTML}
             </div>
         `;
+        
+        // Ajouter l'événement de clic sur le header pour déplier/replier
+        const header = card.querySelector('.competence-header');
+        header.addEventListener('click', () => {
+            card.classList.toggle('expanded');
+        });
+        
         grid.appendChild(card);
     });
 }

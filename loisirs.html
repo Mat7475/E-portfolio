@@ -5,7 +5,7 @@
     <title>Mathieu Servonnet - Loisirs</title>
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/loisirs.css">
-    <link rel="stylesheet" href="css/experiences.css"></head>
+</head>
 <body>
     <div class="animated-bg"></div>
     <div id="particles-container"></div>
@@ -25,34 +25,263 @@
     </nav>
 
     <div class="container">
-        <div class="card" style="text-align:center; margin-bottom:3rem;">
-            <h1>🎮 Mes Passions</h1>
-            <p>Ce qui me motive en dehors du code</p>
+        <div class="hero-loisirs">
+            <h1 class="passion-title">Mes Passions</h1>
+            <p class="passion-subtitle">Ce qui me motive en dehors du code</p>
         </div>
 
-        <div class="projects-grid">
-            <div class="card">
-                <h3>Projets perso</h3>
-                <p>Développement d'applications web pour explorer de nouvelles technologies.</p>
+        <div class="passions-grid">
+            <!-- Projets Perso -->
+            <div class="passion-card" data-category="tech">
+                <div class="passion-image-container">
+                    <img src="asset/img/autopulse.png" alt="Projets personnels" onerror="this.src='https://via.placeholder.com/400x300/3b82f6/ffffff?text=Projets+Perso'">
+                    <div class="passion-overlay">
+                        <span class="passion-icon">💻</span>
+                    </div>
+                </div>
+                <div class="passion-content">
+                    <h3>Projets Personnels</h3>
+                    <p>Développement d'applications web pour explorer de nouvelles technologies et frameworks. J'aime expérimenter avec les dernières innovations du web.</p>
+                    <div class="passion-tags">
+                        <span class="tag-passion">Innovation</span>
+                        <span class="tag-passion">Code</span>
+                    </div>
+                </div>
             </div>
-            <div class="card">
-                <h3>Veille</h3>
-                <p>Suivi des dernières tendances en IA et développement.</p>
+
+            <!-- Veille Technologique -->
+            <div class="passion-card" data-category="tech">
+                <div class="passion-image-container">
+                    <img src="asset/img/Veille.png" alt="Veille technologique" onerror="this.src='https://via.placeholder.com/400x300/8b5cf6/ffffff?text=Veille+Tech'">
+                    <div class="passion-overlay">
+                        <span class="passion-icon">🔍</span>
+                    </div>
+                </div>
+                <div class="passion-content">
+                    <h3>Veille Technologique</h3>
+                    <p>Suivi quotidien des dernières tendances en IA, développement et nouvelles technologies. Toujours à l'affût des innovations qui façonnent notre futur.</p>
+                    <div class="passion-tags">
+                        <span class="tag-passion">IA</span>
+                        <span class="tag-passion">Tech</span>
+                    </div>
+                </div>
             </div>
-            <div class="card">
-                <h3>Sport</h3>
-                <p>Musculation pratiqué 3 à 4 fois par semaine.</p>
+
+            <!-- Sport - Musculation -->
+            <div class="passion-card" data-category="sport">
+                <div class="passion-image-container">
+                    <img src="asset/img/Salle.png" alt="Musculation" onerror="this.src='https://via.placeholder.com/400x300/ef4444/ffffff?text=Musculation'">
+                    <div class="passion-overlay">
+                        <span class="passion-icon">💪</span>
+                    </div>
+                </div>
+                <div class="passion-content">
+                    <h3>Musculation</h3>
+                    <p>Pratique régulière 3 à 4 fois par semaine. Un moment pour me dépasser, maintenir ma discipline et prendre soin de ma santé physique et mentale.</p>
+                    <div class="passion-tags">
+                        <span class="tag-passion">Discipline</span>
+                        <span class="tag-passion">Santé</span>
+                    </div>
+                </div>
             </div>
-            <div class="card">
-                <h3>Le voyage</h3>
-                <p>Découverte de nouvelles cultures, et de spécialités local.</p>
+
+            <!-- Football -->
+            <div class="passion-card" data-category="sport">
+                <div class="passion-image-container">
+                    <img src="asset/img/Foot.png" alt="Football" onerror="this.src='https://via.placeholder.com/400x300/10b981/ffffff?text=Football'">
+                    <div class="passion-overlay">
+                        <span class="passion-icon">⚽</span>
+                    </div>
+                </div>
+                <div class="passion-content">
+                    <h3>Football</h3>
+                    <p>Pratiqué pendant 6 ans et toujours fan inconditionnel ! Je regarde de nombreux matchs chaque semaine et suis l'actualité du foot de près.</p>
+                    <div class="passion-tags">
+                        <span class="tag-passion">Sport collectif</span>
+                        <span class="tag-passion">Passion</span>
+                    </div>
+                </div>
             </div>
-            <div class="card">
-                <h3>Lire</h3>
-                <p>Grand fan de manga, plus de 250 tomes lues.</p>
+
+            <!-- Formule 1 -->
+            <div class="passion-card" data-category="sport">
+                <div class="passion-image-container">
+                    <img src="asset/img/F1.png" alt="Formule 1" onerror="this.src='https://via.placeholder.com/400x300/dc2626/ffffff?text=Formule+1'">
+                    <div class="passion-overlay">
+                        <span class="passion-icon">🏎️</span>
+                    </div>
+                </div>
+                <div class="passion-content">
+                    <h3>Formule 1</h3>
+                    <p>Grand passionné de F1, je ne rate aucune course ! L'adrénaline, la stratégie et la technologie de pointe me fascinent à chaque Grand Prix.</p>
+                    <div class="passion-tags">
+                        <span class="tag-passion">Vitesse</span>
+                        <span class="tag-passion">Stratégie</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tennis -->
+            <div class="passion-card" data-category="sport">
+                <div class="passion-image-container">
+                    <img src="asset/img/tennis.png" alt="Tennis" onerror="this.src='https://via.placeholder.com/400x300/f59e0b/ffffff?text=Tennis'">
+                    <div class="passion-overlay">
+                        <span class="passion-icon">🎾</span>
+                    </div>
+                </div>
+                <div class="passion-content">
+                    <h3>Tennis</h3>
+                    <p>Fan de tennis, je suis les tournois du Grand Chelem et admire la technique et la persévérance des grands joueurs.</p>
+                    <div class="passion-tags">
+                        <span class="tag-passion">Élégance</span>
+                        <span class="tag-passion">Précision</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Voyage -->
+            <div class="passion-card" data-category="culture">
+                <div class="passion-image-container">
+                    <img src="asset/img/Voyage.png" alt="Voyage" onerror="this.src='https://via.placeholder.com/400x300/06b6d4/ffffff?text=Voyage'">
+                    <div class="passion-overlay">
+                        <span class="passion-icon">✈️</span>
+                    </div>
+                </div>
+                <div class="passion-content">
+                    <h3>Voyage</h3>
+                    <p>Découverte de nouvelles cultures, gastronomies locales et paysages époustouflants. Chaque voyage est une source d'inspiration et d'enrichissement personnel.</p>
+                    <div class="passion-tags">
+                        <span class="tag-passion">Culture</span>
+                        <span class="tag-passion">Découverte</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jeux Vidéo -->
+            <div class="passion-card" data-category="gaming">
+                <div class="passion-image-container">
+                    <img src="asset/img/Gaming.png" alt="Jeux vidéo" onerror="this.src='https://via.placeholder.com/400x300/a855f7/ffffff?text=Gaming'">
+                    <div class="passion-overlay">
+                        <span class="passion-icon">🎮</span>
+                    </div>
+                </div>
+                <div class="passion-content">
+                    <h3>Jeux Vidéo</h3>
+                    <p>Gamer passionné avec une préférence pour les jeux compétitifs et stratégiques. De FIFA à Valorant, j'aime les défis et l'esprit d'équipe !</p>
+                    <div class="passion-tags">
+                        <span class="tag-passion">FIFA</span>
+                        <span class="tag-passion">Rocket League</span>
+                        <span class="tag-passion">Valorant</span>
+                        <span class="tag-passion">LoL</span>
+                        <span class="tag-passion">Fortnite</span>
+                        <span class="tag-passion">Apex</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lecture/Manga -->
+            <div class="passion-card" data-category="culture">
+                <div class="passion-image-container">
+                    <img src="asset/img/Manga.png" alt="Lecture manga" onerror="this.src='https://via.placeholder.com/400x300/8b5cf6/ffffff?text=Manga'">
+                    <div class="passion-overlay">
+                        <span class="passion-icon">📚</span>
+                    </div>
+                </div>
+                <div class="passion-content">
+                    <h3>Lecture & Manga</h3>
+                    <p>Grand fan de manga avec plus de 250 tomes lus ! J'apprécie la diversité des histoires, des univers fantastiques aux récits psychologiques.</p>
+                    <div class="passion-tags">
+                        <span class="tag-passion">Imagination</span>
+                        <span class="tag-passion">250+ tomes</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section Stats -->
+        <div class="passion-stats">
+            <div class="stat-card">
+                <div class="stat-number">250+</div>
+                <div class="stat-label">Tomes de manga lus</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">6 ans</div>
+                <div class="stat-label">De pratique du football</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">6</div>
+                <div class="stat-label">Jeux favoris</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">3-4x</div>
+                <div class="stat-label">Sessions sport / semaine</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">∞</div>
+                <div class="stat-label">Passion pour la tech</div>
             </div>
         </div>
     </div>
+    <footer class="contact-footer">
+            <h3 class="footer-title">Mes Coordonnées</h3>
+            <div class="contact-info-grid">
+                <div class="contact-info-card">
+                    <div class="contact-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+                        </svg>
+                    </div>
+                    <div class="contact-info-content">
+                        <h4>Email</h4>
+                        <a href="mailto:mathieu.servonnet@exemple.com">mat.servonnet@gmail.com</a>
+                    </div>
+                </div>
+
+                <div class="contact-info-card">
+                    <div class="contact-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+                        </svg>
+                    </div>
+                    <div class="contact-info-content">
+                        <h4>Téléphone</h4>
+                        <a href="tel:+33612345678">+33 7 69 02 20 98</a>
+                    </div>
+                </div>
+
+                <div class="contact-info-card">
+                    <div class="contact-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                        </svg>
+                    </div>
+                    <div class="contact-info-content">
+                        <h4>Localisation</h4>
+                        <p>Chavanod, Haute-Savoie, France</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Réseaux sociaux -->
+            <div class="social-links">
+                <a href="https://github.com/Mat7475" target="_blank" class="social-link" aria-label="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/mathieu-servonnet-07560a310/" target="_blank" class="social-link" aria-label="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Mathieu Servonnet. Tous droits réservés.</p>
+            </div>
+        </footer>
+    </div>
     <script src="js/script.js"></script>
+    <script src="js/loisirs.js"></script>
 </body>
 </html>

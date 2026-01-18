@@ -1,7 +1,7 @@
 /* --- GRILLE PRINCIPALE --- */
 .competences-grid {
     display: grid;
-    grid-template-columns: 1fr; /* Une colonne par défaut pour la lisibilité */
+    grid-template-columns: 1fr;
     gap: 3rem;
     padding-bottom: 4rem;
     animation: fadeIn 0.8s ease-out;
@@ -14,11 +14,10 @@
 
 /* --- CARTE COMPÉTENCE (Conteneur principal) --- */
 .competence-card {
-    /* Hérite du glassmorphism de global.css mais un peu plus opaque pour le contenu */
     background: rgba(30, 58, 95, 0.4); 
     backdrop-filter: blur(12px);
     border-radius: 20px;
-    border: 1px solid rgba(59, 130, 246, 0.2); /* var(--primary) avec opacité */
+    border: 1px solid rgba(59, 130, 246, 0.2);
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
@@ -26,15 +25,28 @@
 
 .competence-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(59, 130, 246, 0.15); /* Lueur bleue */
+    box-shadow: 0 15px 40px rgba(59, 130, 246, 0.15);
     border-color: rgba(59, 130, 246, 0.4);
 }
 
-/* --- HEADER DE LA CARTE --- */
+/* --- HEADER DE LA CARTE (Cliquable) --- */
 .competence-header {
     background: linear-gradient(90deg, rgba(10, 22, 40, 0.8), rgba(30, 58, 95, 0.2));
     padding: 2rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s;
+}
+
+.competence-header:hover {
+    background: linear-gradient(90deg, rgba(10, 22, 40, 0.9), rgba(30, 58, 95, 0.3));
+}
+
+.competence-header-content {
+    flex: 1;
 }
 
 .competence-header h2 {
@@ -42,28 +54,47 @@
     font-weight: 700;
     margin-bottom: 0.5rem;
     text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-    /* La couleur est gérée dynamiquement par le JS (comp.couleur), 
-       mais on met un fallback blanc */
     color: var(--text-light); 
 }
 
 .competence-header p {
-    color: #94a3b8; /* Gris bleuté lisible */
+    color: #94a3b8;
     font-size: 1rem;
     line-height: 1.6;
     max-width: 90%;
 }
 
-/* --- CORPS DE LA CARTE --- */
+/* --- ICÔNE DE DÉPLIAGE --- */
+.toggle-icon {
+    font-size: 1.5rem;
+    color: var(--primary);
+    transition: transform 0.3s ease;
+    user-select: none;
+}
+
+.competence-card.expanded .toggle-icon {
+    transform: rotate(180deg);
+}
+
+/* --- CORPS DE LA CARTE (Collapsible) --- */
 .competence-body {
+    padding: 0 2rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+}
+
+.competence-card.expanded .competence-body {
+    max-height: 10000px; /* Grande valeur pour s'adapter au contenu */
     padding: 2rem;
+    transition: max-height 0.5s ease-in, padding 0.5s ease-in;
 }
 
 /* --- BLOC NIVEAU (1, 2, 3) --- */
 .niveau-block {
     margin-top: 2rem;
     padding-top: 2rem;
-    border-top: 1px solid rgba(59, 130, 246, 0.15); /* Séparateur subtil */
+    border-top: 1px solid rgba(59, 130, 246, 0.15);
 }
 
 .niveau-block:first-child {
@@ -88,7 +119,7 @@
 }
 
 .ac-item {
-    background: rgba(10, 22, 40, 0.6); /* Plus foncé que la carte */
+    background: rgba(10, 22, 40, 0.6);
     border: 1px solid rgba(255, 255, 255, 0.05);
     padding: 1rem 1.5rem;
     border-radius: 12px;
@@ -97,7 +128,6 @@
     overflow: hidden;
 }
 
-/* Effet de survol sur l'AC */
 .ac-item:hover {
     background: rgba(59, 130, 246, 0.1);
     border-color: rgba(59, 130, 246, 0.3);
@@ -112,21 +142,20 @@
     top: 0;
     bottom: 0;
     width: 4px;
-    background: var(--secondary); /* Couleur par défaut, écrasée par le style inline du JS si besoin */
+    background: var(--secondary);
     opacity: 0.7;
 }
 
 /* --- PREUVES (CONTAINER ET CARTES) --- */
 .preuves-container {
     display: grid;
-    /* Responsive : s'adapte automatiquement à la largeur */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
     margin-top: 1.5rem;
 }
 
 .preuve-card {
-    background: rgba(15, 23, 42, 0.8); /* Très sombre pour le contraste */
+    background: rgba(15, 23, 42, 0.8);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 16px;
     padding: 1.5rem;
@@ -136,7 +165,7 @@
 }
 
 .preuve-card:hover {
-    border-color: var(--accent); /* Cyan au survol */
+    border-color: var(--accent);
     transform: translateY(-3px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
@@ -152,7 +181,7 @@
 }
 
 .preuve-card ul {
-    list-style-type: none; /* On retire les puces par défaut */
+    list-style-type: none;
     margin: 0.5rem 0 1rem 0;
     padding: 0;
 }
@@ -166,7 +195,6 @@
     line-height: 1.4;
 }
 
-/* Puce personnalisée pour la liste */
 .preuve-card li::before {
     content: '▹';
     position: absolute;
@@ -176,7 +204,7 @@
 
 /* --- TAGS TECHNOLOGIES DANS LES PREUVES --- */
 .preuve-techs {
-    margin-top: auto; /* Pousse les tags vers le bas */
+    margin-top: auto;
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
@@ -189,7 +217,6 @@
     border-radius: 20px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    /* Le background est géré par le JS, mais on ajoute une transition */
     transition: filter 0.3s;
 }
 
@@ -208,17 +235,16 @@
     }
 
     .preuves-container {
-        grid-template-columns: 1fr; /* Une seule colonne sur mobile */
+        grid-template-columns: 1fr;
     }
     
     .ac-item:hover {
-        transform: translateX(5px); /* Moins de mouvement sur mobile */
+        transform: translateX(5px);
     }
 }
 
 .projects-grid {
     display: grid;
-    /* Création de colonnes dynamiques : s'adapte à la largeur de l'écran */
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 3rem;
     padding-bottom: 4rem;
@@ -231,17 +257,15 @@
 }
 
 .project-card {
-    /* Même style "verre" que les compétences */
     background: rgba(30, 58, 95, 0.4);
     backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px); /* Pour Safari */
+    -webkit-backdrop-filter: blur(12px);
     border-radius: 20px;
     border: 1px solid rgba(59, 130, 246, 0.2);
     overflow: hidden;
     display: flex;
-    flex-direction: column; /* Pour que le footer reste en bas */
+    flex-direction: column;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    height: 100%; /* Important pour aligner les hauteurs */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
@@ -252,41 +276,66 @@
 }
 
 .project-header {
-    /* Même dégradé que competence-header */
     background: linear-gradient(90deg, rgba(10, 22, 40, 0.8), rgba(30, 58, 95, 0.2));
     padding: 2rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.project-header:hover {
+    background: linear-gradient(90deg, rgba(10, 22, 40, 0.9), rgba(30, 58, 95, 0.3));
+}
+
+.project-header-content {
+    flex: 1;
 }
 
 .project-header h3 {
     font-size: 1.6rem;
     font-weight: 700;
     color: var(--text-light);
-    margin: 0;
+    margin: 0 0 0.5rem 0;
     text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
-/* Date stylisée */
 .project-header span {
     font-size: 0.9rem;
     color: var(--secondary);
-    font-family: monospace; /* Petit côté "tech" */
+    font-family: monospace;
     opacity: 0.9;
 }
 
-/* --- CORPS DE LA CARTE --- */
-.project-body {
-    padding: 2rem;
-    flex-grow: 1; /* Pousse le contenu pour remplir l'espace */
-    display: flex;
-    flex-direction: column;
-    color: #cbd5e1; /* Gris clair lisible */
+.project-toggle-icon {
+    font-size: 1.5rem;
+    color: var(--primary);
+    transition: transform 0.3s ease;
+    user-select: none;
 }
 
-/* Titres internes (Contexte, Missions...) */
+.project-card.expanded .project-toggle-icon {
+    transform: rotate(180deg);
+}
+
+.project-body {
+    padding: 0 2rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+    display: flex;
+    flex-direction: column;
+    color: #cbd5e1;
+}
+
+.project-card.expanded .project-body {
+    max-height: 10000px;
+    padding: 2rem;
+    transition: max-height 0.5s ease-in, padding 0.5s ease-in;
+}
+
 .project-body strong {
     color: var(--accent);
     text-transform: uppercase;
@@ -302,12 +351,10 @@
     font-size: 0.95rem;
 }
 
-/* --- LISTE DES MISSIONS --- */
 .project-body ul {
-    list-style: none; /* On enlève les puces moches par défaut */
+    list-style: none;
     padding: 0;
     margin: 0 0 2rem 0;
-    /* Fond sombre pour détacher la liste */
     background: rgba(10, 22, 40, 0.3);
     border-radius: 12px;
     padding: 1.2rem;
@@ -326,7 +373,6 @@
     margin-bottom: 0;
 }
 
-/* Puce personnalisée (flèche) */
 .project-body li::before {
     content: '➔';
     position: absolute;
@@ -336,7 +382,6 @@
     top: 3px;
 }
 
-/* --- FOOTER DE LA CARTE (Tags) --- */
 .project-footer {
     margin-top: auto;
     display: flex;
@@ -344,7 +389,6 @@
     gap: 1rem;
 }
 
-/* Tags Technologies */
 .project-card .tag {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -363,7 +407,6 @@
     border-color: rgba(59, 130, 246, 0.3);
 }
 
-/* Séparateur avant les compétences */
 .competence-tags {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding-top: 1rem;
@@ -378,10 +421,9 @@
     font-weight: 700;
 }
 
-/* --- RESPONSIVE --- */
 @media (max-width: 768px) {
     .projects-grid {
-        grid-template-columns: 1fr; /* Une seule colonne sur mobile */
+        grid-template-columns: 1fr;
         gap: 2rem;
     }
 

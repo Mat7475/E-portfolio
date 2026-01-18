@@ -24,7 +24,7 @@ const competences = [
                             "Gestion des collisions joueur/décor"
                         ],
                         technos: ["C#", "WPF", "Visual Studio"],
-                        images: ["images/goldrush/gameplay.png"]
+                        ac: ["AC1", "AC2", "AC3"],
                     }
                 ]
             },
@@ -48,7 +48,7 @@ const competences = [
                             "Pipeline CI/CD sur Azure DevOps"
                         ],
                         technos: [".NET 8", "Vue.js", "Azure", "Cypress"],
-                        images: ["images/uber/architecture.png"]
+                        ac: ["AC1", "AC2", "AC3", "AC4"]
                     }
                 ]
             },
@@ -72,7 +72,7 @@ const competences = [
                             "Déploiement conteneurisé sur Azure (Docker)"
                         ],
                         technos: ["Docker", "Azure Cloud", "Microservices","IA", "C#","Blazor", ".NET", "API Externes"],
-                        images: []
+                        ac: ["AC1", "AC2", "AC3"]
                     }
                 ]
             }
@@ -101,7 +101,7 @@ const competences = [
                             "Optimisation de la détection de collision (Hitbox)"
                         ],
                         technos: ["Algorithmique", "C#"],
-                        images: []
+                        ac: ["AC1", "AC2"]
                     }
                 ]
             },
@@ -126,7 +126,7 @@ const competences = [
                             "Afin d'optimiser les requetes HTTP entre le client et l'API, nous avons utilisé des DTOs (Data Transfer Objects) pour ne transférer que les données nécessaires, réduisant ainsi la charge réseau et améliorant les performances.",
                         ],
                         technos: ["Bcrypt", "JWT", "DTOs", "Azure", "Moq"],
-                        images: []
+                        ac: ["AC1", "AC2", "AC3", "AC4"]
                     }
                 ]
             },
@@ -151,7 +151,7 @@ const competences = [
                             "Tests de charge sur l'API"
                         ],
                         technos: ["Visual Studio Profiler", "Async/Await", "DTOs", "Moq"],
-                        images: []
+                        ac: ["AC1", "AC2", "AC3"]
                     }
                 ]
             }
@@ -180,7 +180,7 @@ const competences = [
                             "Configuration des partitions et utilisateurs"
                         ],
                         technos: ["VirtualBox", "Ubuntu", "Bash"],
-                        images: []
+                        ac: ["AC1", "AC2"]
                     }
                 ]
             },
@@ -202,7 +202,7 @@ const competences = [
                             "Mise en réseau (IP statique, DNS)"
                         ],
                         technos: ["Raspberry Pi", "Apache", "SSH", "Linux"],
-                        images: []
+                        ac: ["AC1", "AC2", "AC3"]
                     }
                 ]
             }
@@ -231,7 +231,7 @@ const competences = [
                             "Écriture de 20 requêtes SQL complexes (Jointures, Agrégats)"
                         ],
                         technos: ["SQL", "MCD", "PostgreSQL"],
-                        images: []
+                        ac: ["AC1", "AC2"]
                     }
                 ]
             },
@@ -255,7 +255,7 @@ const competences = [
                             "Creation de procédures stockées pour automatiser les tâches récurrentes(création de panier vide au moment de la création d'un utilisateur, mise a jour du statut d'une course...)"
                         ],
                         technos: ["Entity Framework", "PostgreSQL", "ORM", "SQL"],
-                        images: []
+                        ac: ["AC1", "AC2", "AC3"]
                     }
                 ]
             }
@@ -286,7 +286,7 @@ const competences = [
                             "Rédaction du Cahier des charges fonctionnel"
                         ],
                         technos: ["UML", "Word"],
-                        images: []
+                        ac: ["AC1", "AC2"]
                     }
                 ]
             },
@@ -308,7 +308,7 @@ const competences = [
                             "Animation des cérémonies Scrum"
                         ],
                         technos: ["Scrum", "Azure DevOps", "Jira"],
-                        images: []
+                        ac: ["AC1", "AC2"]
                     }
                 ]
             }
@@ -337,7 +337,7 @@ const competences = [
                             "Communication quotidienne et entraide"
                         ],
                         technos: ["Communication", "Pair Programming"],
-                        images: []
+                        ac: ["AC1", "AC2"]
                     }
                 ]
             },
@@ -359,7 +359,7 @@ const competences = [
                             "Revues de code (Merge Requests) systématiques"
                         ],
                         technos: ["Git", "Code Review", "Teams"],
-                        images: []
+                        ac: ["AC1", "AC2", "AC3"]
                     }
                 ]
             },
@@ -384,7 +384,7 @@ const competences = [
                             "Utlisation de patterns de gestion de projet agile",
                         ],
                         technos: ["Leadership", "Mentoring"],
-                        images: []
+                        ac: ["AC1", "AC2", "AC3", "AC4"]
                     }
                 ]
             }
