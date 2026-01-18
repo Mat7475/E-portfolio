@@ -123,6 +123,7 @@ function generateCompetences() {
     competences.forEach(comp => {
         const card = document.createElement('div');
         card.className = 'competence-card';
+        card.id = comp.nav;
         card.style.borderLeft = `5px solid ${comp.couleur || '#6366f1'}`;
 
         let niveauxHTML = '';
@@ -137,9 +138,9 @@ function generateCompetences() {
                 let preuvesHTML = '';
                 if(niv.preuves && niv.preuves.length > 0) {
                     preuvesHTML = `<div class="preuves-container" style="margin-top: 1rem; display:grid; gap:1rem;">` + 
-                    niv.preuves.map(preuve => `
+                    niv.preuves.map(preuve => `<a href="#${preuve.titre}">
                         <div class="preuve-card" style="background: rgba(15, 23, 42, 0.6); padding: 1rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
-                             <a href="#${preuve.titre}"><h5 style="color: #fff; margin-bottom: 0.5rem; font-size: 1rem;" >📂 ${preuve.titre}</h5></a>
+                             <h5 style="color: #fff; margin-bottom: 0.5rem; font-size: 1rem;" >📂 ${preuve.titre}</h5>
                             <p style="color: #94a3b8; font-size: 0.9rem; font-style: italic; margin-bottom: 0.8rem;">${preuve.contexte}</p>
                             
                             <ul style="padding-left: 1.2rem; color: #cbd5e1; font-size: 0.9rem; margin-bottom: 0.8rem;">
@@ -152,7 +153,7 @@ function generateCompetences() {
                             <div class="preuve-techs" style="display:flex; flex-wrap:wrap; gap:0.4rem;">
                                 ${preuve.ac.map(t => `<span style="background: ${comp.couleur}33; color: ${comp.couleur};margin-top:0.5rem; padding: 2px 8px; border-radius: 12px; font-size: 0.75rem;">${t}</span>`).join('')}
                             </div>
-                        </div>
+                        </div></a>
                     `).join('') + `</div>`;
                 }
 
@@ -167,7 +168,7 @@ function generateCompetences() {
                             ${acHTML}
                         </div>
 
-                        ${preuvesHTML ? `<strong style="display:block; margin:1rem 0 0.5rem; color:#94a3b8; font-size:0.9rem;">Preuves & Réalisations :</strong>` : ''}
+                        ${preuvesHTML ? `<strong style="display:block; margin:1rem 0 0.5rem; color:#94a3b8; font-size:0.9rem;">Preuve & Réalisation (cliquez pour plus de détails):</strong>` : ''}
                         ${preuvesHTML}
                     </div>
                 `;
@@ -176,8 +177,8 @@ function generateCompetences() {
 
         card.innerHTML = `
             <div class="competence-header">
-                <div class="competence-header-content">
-                    <h2 id="${comp.nav}" style="color: ${comp.couleur}; margin: 0 0 0.5rem 0;">${comp.titre}</h2>
+                <div class="competence-header-content" >
+                    <h2 style="color: ${comp.couleur}; margin: 0 0 0.5rem 0;">${comp.titre}</h2>
                     <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.5;">${comp.description}</p>
                 </div>
                 <div class="toggle-icon">▼</div>
