@@ -529,4 +529,29 @@ const experiences = [
         technologies: ["Linux", "Bash", "Apache", "SSH", "VirtualBox"],
         competences: ["Administrer", "Collaborer"]
     },
+    {
+    id: "gymtracker",
+    title: "GymTracker — Application de suivi de musculation",
+    date: "2026",
+    contexte: "Projet personnel développé pour tracker mes séances de musculation et suivre ma progression au fil du temps, utilisé en famille.",
+    description: "Application web full-stack avec React + TypeScript côté front, API REST .NET 10 côté back, PostgreSQL hébergé sur Supabase. Déployée sur Vercel (front) et Railway (back).",
+    missions: [
+        "Conception et développement d'une API REST avec .NET 10 et C# suivant le pattern Repository",
+        "Gestion multi-utilisateurs avec sélection de profil au lancement (sans authentification, usage familial)",
+        "Création de séances par groupe musculaire avec saisie des séries (kg × reps) et répétition rapide des séries identiques",
+        "Dashboard de progression par muscle avec graphes de charge maximale par exercice (Recharts)",
+        "Records personnels filtrés par utilisateur",
+        "Panel Admin pour gérer les utilisateurs, groupes musculaires et exercices",
+        "Interface responsive avec menu burger sur mobile",
+        "Déploiement complet : Supabase (PostgreSQL), Railway (API), Vercel (front)"
+    ],
+    images: [
+        "asset/img/gymtracker-montage-dashboard-history.jpg",
+        "asset/img/gymtracker-montage-session-flow.jpg",
+        "asset/img/gymtracker-montage-admin-mobile.jpg"
+    ],
+    documents: [],
+    technologies: ["React", "TypeScript", "C#", ".NET 10", "PostgreSQL", "Supabase", "Railway", "Vercel", "Entity Framework"],
+    competences: ["Réaliser", "Optimiser", "Administrer"]
+},
 ];
